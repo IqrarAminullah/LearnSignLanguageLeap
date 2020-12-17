@@ -21,8 +21,8 @@ public class GestureRecognition
     #region public methods
     public GestureRecognition()
     {
-        List<SGClassWrapper> StaticGestures = sqliteProvider.GetAllStaticGestureClasses();
-        List<DGClassWrapper> DynamicGestures = sqliteProvider.GetAllDynamicGestureClasses();
+        List<SGClassWrapper> StaticGestures = new List<SGClassWrapper>();//sqliteProvider.GetAllStaticGestureClasses();
+        List<DGClassWrapper> DynamicGestures = new List<DGClassWrapper>();//sqliteProvider.GetAllDynamicGestureClasses();
         Classifier = new StatisticalClassifier(StaticGestures, DynamicGestures);
         DgRecorder = new DGRecorder(inRecordMode: false);
         CurrentState = DgRecorder.State;

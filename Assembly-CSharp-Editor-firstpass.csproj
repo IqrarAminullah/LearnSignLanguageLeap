@@ -315,11 +315,11 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>C:/Users/ASUS/Tugas Akhir Revisited/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>C:/Users/ASUS/Tugas Akhir Revisited/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data.SQLite">
       <HintPath>C:/Users/ASUS/Tugas Akhir Revisited/Assets/Plugins/SQLite/Managed/System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>C:/Users/ASUS/Tugas Akhir Revisited/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.16f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
