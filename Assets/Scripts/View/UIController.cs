@@ -5,6 +5,6 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     #region public attributes
-    public int type;
+    public UITYpe type;
     #endregion
 }

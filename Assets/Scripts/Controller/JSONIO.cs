@@ -8,46 +8,44 @@ using Newtonsoft.Json;
 public class JSONIO
 {
     #region constants
-    string filepath = Application.dataPath + "/Data/JSON/";
+    string filepath = Application.dataPath + "/Resources/JSON/";
     #endregion
     #region private methods
-    private void RemoveFileExtension()
+    private string RemoveFileExtension(string filePath)
     {
-
+        string newFilePath = filePath.Replace(".json", "");
+        return newFilePath;
     }
     #endregion
     #region public methods
     public T LoadJSON<T>(string file)
     {
-        if (File.Exists(filepath + file))
+        string filename = RemoveFileExtension(file);
+        var targetFile = Resources.Load<TextAsset>("JSON/" + filename);
+        if(targetFile != null)
         {
-            using (StreamReader reader = File.OpenText(filepath+file))
+            T obj = JsonConvert.DeserializeObject<T>(targetFile.text);
+            if (obj == null)
             {
-                JsonSerializer serializer = new JsonSerializer();
-                T obj = (T) serializer.Deserialize(reader, typeof(T));
-
-                if (obj == null)
-                {
-                    Debug.LogError("Failed to Load JSON " + file);
-                    return default(T);
-                }
-                else
-                {
-                    Debug.Log("Loading JSON " + file);
-                    return obj;
-                }
+                Debug.LogError("Failed to Load JSON " + file);
+                return default(T);
+            }
+            else
+            {
+                Debug.Log("Loading JSON " + file);
+                return obj;
             }
         }
         else
         {
-            Debug.Log("File path is empty");
+            Debug.Log("File path "+ filename+" is empty");
             return default(T);
         }
     }
 
     public void SaveJson<T>(string file, T obj)
     {
-        if(filepath == string.Empty)
+        if(file == string.Empty)
         {
             Debug.LogError("JSON Write Error : Path is empty");
         }
