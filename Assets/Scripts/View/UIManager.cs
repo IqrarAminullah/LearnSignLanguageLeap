@@ -2,34 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
-public enum UITYpe
+public enum UIType
 {
     MainMenu,
-    Lesson,
-    Learn,
-    Train
+    MainMenu2,
+    MenuList,
+    PauseScreen,
+    EndScreen
 }
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : MonoBehaviour
 {
     #region private attributes
     private List<UIController> controllerList { get; set; }
     private UIController activeUI { get; set; }
     [SerializeField]
-    private UITYpe bootMenu;
-    #endregion
+    private UIType bootMenu;
 
+    #endregion
     #region public methods
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
         controllerList = GetComponentsInChildren<UIController>().ToList();
         controllerList.ForEach(x => x.gameObject.SetActive(false));
         SwitchUI(bootMenu);
     }
 
-    public void SwitchUI(UITYpe targetUI)
+    public void SwitchUI(UIType targetUI)
     {
         if(activeUI != null)
         {
@@ -43,7 +44,7 @@ public class UIManager : Singleton<UIManager>
         }
         else
         {
-            Debug.LogError("UI destination not found");
+            Debug.LogError("UI destination not found" + targetUI);
         }
     }
     #endregion

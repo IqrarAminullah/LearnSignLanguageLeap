@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
-
+using UnityEngine;
 namespace LeapGestureRecognition
 {
 	[DataContract]
@@ -159,8 +159,11 @@ namespace LeapGestureRecognition
 				FingerJointPositions_World.Add(finger.Type, new Dictionary<FingerJoint, Vec3>());
 				foreach (var boneType in (Bone.BoneType[])Enum.GetValues(typeof(Bone.BoneType)))
 				{
-					Vec3 worldPoint = new Vec3(finger.Bone(boneType).NextJoint);
-					FingerJointPositions_World[finger.Type].Add((FingerJoint)(int)boneType, worldPoint);
+					if (boneType != Bone.BoneType.TYPE_INVALID)
+                    {
+						Vec3 worldPoint = new Vec3(finger.Bone(boneType).NextJoint);
+						FingerJointPositions_World[finger.Type].Add((FingerJoint)(int)boneType, worldPoint);
+					}
 				}
 				/*FingerJointPositions_World.Add(finger.Type, new Dictionary<FingerJoint, Vec3>());
 				foreach (var jointType in (FingerJoint[])Enum.GetValues(typeof(FingerJoint)))
@@ -193,8 +196,11 @@ namespace LeapGestureRecognition
 				FingerJointPositions_Relative.Add(finger.Type, new Dictionary<FingerJoint, Vec3>());
 				foreach (var boneType in (Bone.BoneType[])Enum.GetValues(typeof(Bone.BoneType)))
 				{
-					Vec3 relativePoint = new Vec3(HandTransform.TransformPoint(finger.Bone(boneType).NextJoint)) / FingerLengths[finger.Type];
-					FingerJointPositions_Relative[finger.Type].Add((FingerJoint)(int)boneType, relativePoint);
+					if (boneType != Bone.BoneType.TYPE_INVALID)
+					{
+						Vec3 relativePoint = new Vec3(HandTransform.TransformPoint(finger.Bone(boneType).NextJoint)) / FingerLengths[finger.Type];
+						FingerJointPositions_Relative[finger.Type].Add((FingerJoint)(int)boneType, relativePoint);
+					}
 				}
 			}
 		}
@@ -242,11 +248,15 @@ namespace LeapGestureRecognition
 		public float GetFingerLength(Finger.FingerType fingerType)
 		{
 			// Finger length = dist(PalmCenter, MCP) + dist(MCP, PIP) + dist(PIP, DIP) + dist(DIP, TIP)
-			var joints = FingerJointPositions_World[fingerType];
-			float length = PalmPosition.DistanceTo(joints[FingerJoint.JOINT_MCP]);
-			length += joints[FingerJoint.JOINT_MCP].DistanceTo(joints[FingerJoint.JOINT_PIP]);
-			length += joints[FingerJoint.JOINT_PIP].DistanceTo(joints[FingerJoint.JOINT_DIP]);
-			length += joints[FingerJoint.JOINT_DIP].DistanceTo(joints[FingerJoint.JOINT_TIP]);
+			float length = 0f;
+			if(fingerType != Finger.FingerType.TYPE_UNKNOWN)
+            {
+				var joints = FingerJointPositions_World[fingerType];
+				length = PalmPosition.DistanceTo(joints[FingerJoint.JOINT_MCP]);
+				length += joints[FingerJoint.JOINT_MCP].DistanceTo(joints[FingerJoint.JOINT_PIP]);
+				length += joints[FingerJoint.JOINT_PIP].DistanceTo(joints[FingerJoint.JOINT_DIP]);
+				length += joints[FingerJoint.JOINT_DIP].DistanceTo(joints[FingerJoint.JOINT_TIP]);
+			}
 			return length;
 		}
 

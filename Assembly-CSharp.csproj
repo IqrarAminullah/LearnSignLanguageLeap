@@ -64,9 +64,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MainMenuButton.cs" />
     <Compile Include="Assets\Scripts\Controller\GestureRecognition.cs" />
     <Compile Include="Assets\Scripts\Controller\JSONIO.cs" />
+    <Compile Include="Assets\Scripts\Controller\LearnController.cs" />
+    <Compile Include="Assets\Scripts\Controller\LearnEvents.cs" />
     <Compile Include="Assets\Scripts\Controller\LessonController.cs" />
+    <Compile Include="Assets\Scripts\Controller\MainMenuController.cs" />
     <Compile Include="Assets\Scripts\Controller\TrainingController.cs" />
     <Compile Include="Assets\Scripts\LeapGestureRecognition\Model\Enum\FeatureName.cs" />
     <Compile Include="Assets\Scripts\LeapGestureRecognition\Model\Enum\FingerType.cs" />
@@ -94,13 +98,21 @@
     <Compile Include="Assets\Scripts\LeapGestureRecognition\Util\SQLiteProvider.cs" />
     <Compile Include="Assets\Scripts\Model\Flashcard.cs" />
     <Compile Include="Assets\Scripts\Model\HandSign.cs" />
+    <Compile Include="Assets\Scripts\Model\InverseWeightedList.cs" />
     <Compile Include="Assets\Scripts\Model\LessonMaterial.cs" />
+    <Compile Include="Assets\Scripts\Model\MenuItem.cs" />
+    <Compile Include="Assets\Scripts\Utils\AppData.cs" />
     <Compile Include="Assets\Scripts\Utils\SliderEvent.cs" />
     <Compile Include="Assets\Scripts\Utils\VideoController.cs" />
     <Compile Include="Assets\Scripts\View\FlexibleGridLayout.cs" />
+    <Compile Include="Assets\Scripts\View\LearnRenderer.cs" />
+    <Compile Include="Assets\Scripts\View\MainMenuRenderer.cs" />
+    <Compile Include="Assets\Scripts\View\SceneSwitcher.cs" />
     <Compile Include="Assets\Scripts\View\Singleton.cs" />
+    <Compile Include="Assets\Scripts\View\TrainingRenderer.cs" />
     <Compile Include="Assets\Scripts\View\UIController.cs" />
     <Compile Include="Assets\Scripts\View\UIManager.cs" />
+    <Compile Include="Assets\Scripts\View\UISwitcher.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

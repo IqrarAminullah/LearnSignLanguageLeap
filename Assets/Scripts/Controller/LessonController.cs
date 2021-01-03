@@ -29,6 +29,7 @@ public class LessonController : MonoBehaviour
     [SerializeField]
     private GameObject textPrefab;
 
+    private UIManager UIManager;
     private JSONIO jsonUtility;
     public bool debugMode;
     #endregion
@@ -41,11 +42,13 @@ public class LessonController : MonoBehaviour
         jsonUtility = new JSONIO();
         prevButton.onClick.AddListener(prevMaterial);
         nextButton.onClick.AddListener(nextMaterial);
-        
-        if(debugMode == true)
+        UIManager = FindObjectOfType<UIManager>();
+
+        if (debugMode == true)
         {
             DebugLesson();
         }
+        StartLesson(AppData.LoadFilePath);
     }
 
     // Update is called once per frame
@@ -60,8 +63,6 @@ public class LessonController : MonoBehaviour
         n.Add(new LessonMaterial("Alpabet", "HUUUUUUUUUUUUUUUUUUUUUUUUU AAAAAAAAAAAAAAAA", "Sprites/A_Alphabet", MediaType.Image, "AAAAAAAAAAA"));
         n.Add(new LessonMaterial("Ayam", "AAAAAAAAAAAAAAAA", "Video/Test Video", MediaType.Video, "AAAAAAAAAAA"));
         jsonUtility.SaveJson("testLesson.json", n);
-
-        StartLesson(jsonUtility.LoadJSON<List<LessonMaterial>>("testLesson.json"));
     }
 
     private void displayMaterial(LessonMaterial m)
@@ -110,22 +111,23 @@ public class LessonController : MonoBehaviour
     #endregion
 
     #region public methods
-    public void StartLesson(List<LessonMaterial> _lesson)
+    public void StartLesson(string filename)
     {
-        lesson = _lesson;
+        jsonUtility = new JSONIO();
+        lesson = jsonUtility.LoadJSON<List<LessonMaterial>>(filename);
         materialCount = lesson.Count;
         currentMaterial = 0;
         displayMaterial(lesson[currentMaterial]);
     }
     public void nextMaterial()
     {
-        currentMaterial = currentMaterial + 1;
-        if(currentMaterial == materialCount)
+        if(currentMaterial == materialCount-1)
         {
-
+            UIManager.SwitchUI(UIType.EndScreen);   
         }
         else
         {
+            currentMaterial = currentMaterial + 1;
             displayMaterial(lesson[currentMaterial]);
         }
     }

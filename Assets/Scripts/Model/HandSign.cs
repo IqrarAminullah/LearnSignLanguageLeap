@@ -37,5 +37,10 @@ public class HandSign
         meaning = _meaning;
         type = gType;
     }
+
+    public override string ToString()
+    {
+        return string.Format("Name : {0}({1}), sign image : {2}, rep image : {3}, meaning : {4}, gesutype : {5}", sign_word, sign_name, sign_image_path, image_path, meaning, type);
+    }
     #endregion
 }

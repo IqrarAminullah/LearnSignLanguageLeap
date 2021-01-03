@@ -12,7 +12,7 @@ public class Flashcard : MonoBehaviour
     private Image representationImage;
     private Text signName;
     private Text signMeaning;
-
+    
     [SerializeField]
     private GameObject frontSide;
     [SerializeField]
@@ -23,25 +23,46 @@ public class Flashcard : MonoBehaviour
     #endregion
 
     #region private methods
-    private void Start()
+    private void Awake()
     {
-        gameObject.GetComponent<Button>().onClick.AddListener(FlipCard);
-        signImage = frontSide.GetComponentInChildren<Image>();
+        if (signImage == null || signName == null || signMeaning == null || representationImage == null)
+        {
+            Init();
+        }
+        Reset();
+    }
+
+    void Init()
+    {
+        signImage = backSide.GetComponentInChildren<Image>();
         signName = frontSide.GetComponentInChildren<Text>();
         signMeaning = backSide.GetComponentInChildren<Text>();
-        representationImage = backSide.GetComponentInChildren<Image>();
-        Reset();
+        representationImage = frontSide.GetComponentInChildren<Image>();
     }
     #endregion
 
     #region public methods
     public void SetSign(HandSign newSign)
     {
+        if (signImage == null || signName == null || signMeaning == null || representationImage == null)
+        {
+            Init();
+        }
         sign = newSign;
-        signImage.sprite = Resources.Load<Sprite>(sign.sign_image_path);
+        Debug.Log(sign.ToString());
+        if(sign.sign_image_path != string.Empty)
+        {
+            if(signImage.sprite == null)
+            {
+            }
+            signImage.sprite = Resources.Load<Sprite>(sign.sign_image_path);
+        }
+        if(sign.image_path != string.Empty)
+        {
+            representationImage.sprite = Resources.Load<Sprite>(sign.image_path);
+        }
         signName.text = sign.sign_word;
         signMeaning.text = sign.meaning;
-        representationImage.sprite = Resources.Load<Sprite>(sign.image_path);
         Reset();
     }
     public void Reset()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    #region public attributes
-    public UITYpe type;
+    #region public attributess
+    public UIType type;
     #endregion
 }

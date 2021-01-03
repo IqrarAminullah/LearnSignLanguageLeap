@@ -37,27 +37,27 @@ namespace LeapGestureRecognition
 		#endregion
 
 		#region Public Methods
-		public Dictionary<SGClassWrapper, float> GetDistancesFromAllClasses(SGInstance gestureInstance)
+		public Dictionary<string, float> GetDistancesFromAllClasses(SGInstance gestureInstance)
 		{
 			lock (_staticGestureClasses)
 			{
-				var gestureDistances = new Dictionary<SGClassWrapper, float>();
+				var gestureDistances = new Dictionary<string, float>();
 				foreach (var gestureClass in _staticGestureClasses)
 				{
-					gestureDistances.Add(gestureClass, gestureClass.Gesture.DistanceTo(gestureInstance));
+					gestureDistances.Add(gestureClass.Name, gestureClass.Gesture.DistanceTo(gestureInstance));
 				}
 				return gestureDistances;
 			}
 		}
 
-		public Dictionary<DGClassWrapper, float> GetDistancesFromAllClasses(DGInstance gestureInstance)
+		public Dictionary<string, float> GetDistancesFromAllClasses(DGInstance gestureInstance)
 		{
 			lock (_dynamicGestureClasses)
 			{
-				var gestureDistances = new Dictionary<DGClassWrapper, float>();
+				var gestureDistances = new Dictionary<string, float>();
 				foreach (var gestureClass in _dynamicGestureClasses)
 				{
-					gestureDistances.Add(gestureClass, gestureClass.Gesture.DistanceTo(gestureInstance, UseDTW));
+					gestureDistances.Add(gestureClass.Name, gestureClass.Gesture.DistanceTo(gestureInstance, UseDTW));
 				}
 				return gestureDistances;
 			}

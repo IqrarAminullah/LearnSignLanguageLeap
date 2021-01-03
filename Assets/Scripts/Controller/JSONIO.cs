@@ -38,7 +38,7 @@ public class JSONIO
         }
         else
         {
-            Debug.Log("File path "+ filename+" is empty");
+            Debug.LogError("File path "+ filename+" is empty");
             return default(T);
         }
     }
@@ -56,7 +56,7 @@ public class JSONIO
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(writer, obj);
             }
-            Debug.Log("JSON saved : " + filepath + file);
+    
         }
     }
     #endregion
