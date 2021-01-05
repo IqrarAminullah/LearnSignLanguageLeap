@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class TrainingController : MonoBehaviour
 {
     #region private attributes
-    List<HandSign> trainingSigns { get; set; }
 
+    [Header("Variables")]
     [SerializeField]
     const float distanceThreshold = 7;
     [SerializeField]
@@ -27,10 +27,10 @@ public class TrainingController : MonoBehaviour
     private int currentSignIdx;
     private HandSign currentSign;
 
+    private TrainingData dataModel;
+    [Header("References")]
     [SerializeField]
     GestureRecognition classifier;
-    [SerializeField]
-    private UIManager UIManager;
     [SerializeField]
     private TrainingRenderer viewRenderer;
     
@@ -61,7 +61,7 @@ public class TrainingController : MonoBehaviour
             {
                 classifier.StartClassifier();
             }
-
+            if (!inPause)
             {
                 timeRemaining = timeRemaining - Time.deltaTime;
                 if (timeRemaining >= 0)
@@ -92,13 +92,7 @@ public class TrainingController : MonoBehaviour
     }
     private void Init()
     {
-        trainingSigns = new List<HandSign>();
-        if (jsonUtility == null)
-        {
-            jsonUtility = new JSONIO();
-        }
-
-        inPause = false;
+        dataModel = new TrainingData();
     }
     #endregion
 
@@ -113,7 +107,7 @@ public class TrainingController : MonoBehaviour
         {
             if (classifier.Mode == GestureType.Static)
             {
-                distanceScore = classifier.GetGestureDistance(currentSign.sign_name);
+                distanceScore = classifier.GetGestureDistance(dataModel.trainingSigns[currentSignIdx].sign_name);
                 viewRenderer.UpdateClassifierScore(distanceScore);
                 if (distanceScore != Mathf.Infinity)
                 {
@@ -133,7 +127,7 @@ public class TrainingController : MonoBehaviour
             else
             {
                 viewRenderer.UpdateRecorderState(classifier.CurrentState);
-                if (classifier.FinishRecordingDynamicGesture())
+                if (classifier.HasFinishedRecordingDynamicGesture())
                 {
                     distanceScore = classifier.GetGestureDistance(currentSign.sign_name);
                     viewRenderer.UpdateClassifierScore(distanceScore);
@@ -159,7 +153,7 @@ public class TrainingController : MonoBehaviour
     {
         Init();
         quizQuestionNumber = 10;
-        LoadTraining(filename);
+        dataModel.LoadTraining(filename, quizQuestionNumber);
 
         currentSignIdx = -1;
         quizScore = 0;
@@ -172,22 +166,8 @@ public class TrainingController : MonoBehaviour
         {
             classifier.StartClassifier();
         }
+        inPause = false;
         timeRemaining = quizTimer;
-    }
-    public void LoadTraining(string file)
-    {
-        List<HandSign> handSigns = jsonUtility.LoadJSON<List<HandSign>>(file);
-        for (int i = 0; i < handSigns.Count; i++)
-        {
-            HandSign temp = handSigns[i];
-            int randomIndex = Random.Range(i, trainingSigns.Count);
-            handSigns[i] = handSigns[randomIndex];
-            handSigns[randomIndex] = temp;
-        }
-        for (int i = 0; i<quizQuestionNumber; i++)
-        {
-            trainingSigns.Add(handSigns[i]);
-        }
     }
     public void Skip()
     {
@@ -205,15 +185,14 @@ public class TrainingController : MonoBehaviour
     {
         skip = false;
         currentSignIdx = currentSignIdx + 1;
-        if (currentSignIdx < trainingSigns.Count)
+        if (currentSignIdx < dataModel.currentNumSigns)
         {
-            currentSign = trainingSigns[currentSignIdx];
-            viewRenderer.UpdateFlashcard(currentSign);
+            viewRenderer.UpdateFlashcard(dataModel.trainingSigns[currentSignIdx]);
             if (!classifier.Active)
             {
                 classifier.StartClassifier();
             }
-            if (trainingSigns[currentSignIdx].type == GestureType.Static)
+            if (dataModel.trainingSigns[currentSignIdx].type == GestureType.Static)
             {
                 classifier.ChangeToStaticMode();
             }

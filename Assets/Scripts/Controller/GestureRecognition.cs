@@ -91,7 +91,7 @@ public class GestureRecognition : MonoBehaviour
     {
         Debug.Log("Stop Classifier");
         Active = false;
-        classifierThread.Abort();
+        classifierThread.Join();
         //StopCoroutine(GestureClassify());
     }
 
@@ -143,7 +143,7 @@ public class GestureRecognition : MonoBehaviour
         return res;
     }
 
-    public bool FinishRecordingDynamicGesture()
+    public bool HasFinishedRecordingDynamicGesture()
     {
         return CurrentState == DGRecorderState.RecordingJustFinished;
     }

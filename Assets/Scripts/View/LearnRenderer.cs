@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
-public class LearnRenderer : MonoBehaviour
+public class LearnRenderer : UIManager
 {
     #region Attributes
+    [Header("Object References")]
     [SerializeField]
     Text remainingUnknowns;
     [SerializeField]
@@ -29,22 +31,15 @@ public class LearnRenderer : MonoBehaviour
     [SerializeField]
     GameObject nextButton;
     
-
-    Button flashcardButton;
-    Flashcard flashcard;
-
+    [Header("Controller")]
     [SerializeField]
     LearnController controller;
-    [SerializeField]
-    UIManager UIManager;
+
+    Flashcard flashcard;
     #endregion
     // Start is called before the first frame update
     void Start()
     {
-        if(UIManager == null)
-        {
-            UIManager = FindObjectOfType<UIManager>();
-        }
         if(controller == null)
         {
             controller = FindObjectOfType<LearnController>();
@@ -55,6 +50,7 @@ public class LearnRenderer : MonoBehaviour
         knowButton.GetComponent<Button>().onClick.AddListener(NextFlashcard);
         menuButton.onClick.AddListener(Pause);
         reLearnButton.onClick.AddListener(ReLearn);
+        Debug.Log(controllerList.Count);
 
     }
 
@@ -83,7 +79,7 @@ public class LearnRenderer : MonoBehaviour
 
     public void GoToEndScreen(int unknowns, int knowns, int masters)
     {
-        UIManager.SwitchUI(UIType.EndScreen);
+        SwitchUI(UIType.EndScreen);
         remainingUnknowns.text = "Jumlah belum diketahui"+ "\n" + unknowns;
         remianingKnowns.text = "Jumlah sudah diketahui" + "\n" + knowns;
         masteredText.text = "Jumlah dikuasai" + "\n" + masters;
@@ -115,7 +111,7 @@ public class LearnRenderer : MonoBehaviour
     public void ReLearn()
     {
         controller.ReLearn();
-        UIManager.SwitchUI(UIType.MainMenu);
+        SwitchUI(UIType.MainMenu);
     }
 
     public void FlipFlashcard()

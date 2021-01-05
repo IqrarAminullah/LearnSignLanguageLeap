@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TrainingRenderer : MonoBehaviour
+public class TrainingRenderer : UIManager
 {
 
     #region attributes
+    [Header("Object References")]
     [SerializeField]
     Button menuButton;
     [SerializeField]
@@ -32,22 +33,16 @@ public class TrainingRenderer : MonoBehaviour
     [SerializeField]
     GameObject flashcardContainer;
 
-
-    Flashcard flashcard;
-
+    [Header("Controller")]
     [SerializeField]
     TrainingController controller;
-    [SerializeField]
-    UIManager UIManager;
+
+    Flashcard flashcard;
     #endregion
     #region private methods
     // Start is called before the first frame update
     void Start()
     {
-        if (UIManager == null)
-        {
-            UIManager = FindObjectOfType<UIManager>();
-        }
         if (controller == null)
         {
             controller = FindObjectOfType<TrainingController>();
@@ -137,7 +132,7 @@ public class TrainingRenderer : MonoBehaviour
         {
             finalTimeText.text = string.Format("Waktu tersisa \n {0:0} detik", time);
         }
-        UIManager.SwitchUI(UIType.EndScreen);
+        SwitchUI(UIType.EndScreen);
     }
 
     public void UpdateRecorderState(LeapGestureRecognition.DGRecorderState state)
@@ -172,7 +167,7 @@ public class TrainingRenderer : MonoBehaviour
 
     public void RestartQuiz()
     {
-        UIManager.SwitchUI(UIType.MainMenu);
+        SwitchUI(UIType.MainMenu);
         controller.RestartQuiz();
     }
 

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenuRenderer : MonoBehaviour
+public class MainMenuRenderer : UIManager
 {
     #region attributes
+    [Header("Object References")]
     [SerializeField]
     private GameObject flashcardButtonPrefab;
     [SerializeField]
@@ -15,14 +16,34 @@ public class MainMenuRenderer : MonoBehaviour
     [SerializeField]
     private Button mainMenuReturnButton;
 
+    [SerializeField]
+    private Button lessonButton;
+    [SerializeField]
+    private Button learnButton;
+    [SerializeField]
+    private Button quizButton;
+
+    [Header("Controller")]
+    [SerializeField]
+    private MainMenuController controller;
+
     private List<GameObject> menuListGameObjects;
     #endregion
 
 
     #region private methods
 
-    private void Start()
+    void Start()
     {
+        if (controller == null)
+        {
+            controller = FindObjectOfType<MainMenuController>();
+        }
+        lessonButton.onClick.AddListener(() => controller.DisplayLessons());
+        learnButton.onClick.AddListener(() => controller.DisplayFlashcards());
+        quizButton.onClick.AddListener(() => controller.DisplayQuizzes());
+
+        Debug.Log(controllerList.Count);
     }
 
     void EraseMenuList()
@@ -62,7 +83,6 @@ public class MainMenuRenderer : MonoBehaviour
                 mainMenuReturnButton.GetComponentInChildren<UISwitcher>().desiredUIType = UIType.MainMenu;
                 foreach (MenuItem item in menuItemList)
                 {
-                    Debug.Log(item.itemFilePath);
                     GameObject itemButton = Instantiate(lessonButtonPrefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), container.transform);
                     itemButton.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>(item.itemImage);
                     itemButton.GetComponentInChildren<Text>().text = item.itemName;
@@ -81,7 +101,7 @@ public class MainMenuRenderer : MonoBehaviour
             case MenuType.Learn:
                 containerGrid.constraintCount = 4;
                 containerGrid.cellSize = new Vector2(150, 150);
-                mainMenuReturnButton.GetComponentInChildren<UISwitcher>().desiredUIType = UIType.MainMenu2;
+                mainMenuReturnButton.GetComponentInChildren<UISwitcher>().desiredUIType = UIType.PauseScreen;
                 foreach (MenuItem item in menuItemList)
                 {
                     GameObject itemButton = Instantiate(flashcardButtonPrefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), container.transform);
@@ -102,7 +122,7 @@ public class MainMenuRenderer : MonoBehaviour
             case MenuType.Quiz:
                 containerGrid.constraintCount = 4;
                 containerGrid.cellSize = new Vector2(150, 150);
-                mainMenuReturnButton.GetComponentInChildren<UISwitcher>().desiredUIType = UIType.MainMenu2;
+                mainMenuReturnButton.GetComponentInChildren<UISwitcher>().desiredUIType = UIType.PauseScreen;
                 foreach (MenuItem item in menuItemList)
                 {
                     GameObject itemButton = Instantiate(flashcardButtonPrefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), container.transform);

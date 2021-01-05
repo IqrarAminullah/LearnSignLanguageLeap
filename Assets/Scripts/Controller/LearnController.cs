@@ -6,14 +6,7 @@ using UnityEngine.UI;
 public class LearnController : MonoBehaviour
 {
     #region attributes
-    List<HandSign> trainingSigns { get; set; }
-    int signCount;
-
-    private List<HandSign> unknownFlashcards { get; set; }
-    private List<HandSign> knownFlashcards { get; set; }
-    private List<HandSign> masteredFlashcards { get; set; }
-
-    private InverseWeightedList<HandSign> weightedUnknownFlashcards;
+    LearnData dataModel;
     [SerializeField]
     const float distanceThreshold = 3;
     float distanceScore;
@@ -86,46 +79,14 @@ public class LearnController : MonoBehaviour
     }
     private void Init()
     {
-        trainingSigns = new List<HandSign>();
-        if(jsonUtility == null)
-        {
-            jsonUtility = new JSONIO();
-        }
+        dataModel = new LearnData();
     }
 
     #region public methods
-    public void RunFlashcardsWeighted(string filename)
-    {
-        weightedUnknownFlashcards = new InverseWeightedList<HandSign>();
-        List<HandSign> handSigns = jsonUtility.LoadJSON<List<HandSign>>(filename);
-
-        foreach (HandSign h in handSigns)
-        {
-            double randomWeight = Random.Range(1, 10);
-            Debug.Log(h.sign_name + " " + randomWeight);
-            weightedUnknownFlashcards.AddObject(h, randomWeight);
-        }
-
-        for (int i = 0; i <= 5000; i++)
-        {
-            Debug.Log(weightedUnknownFlashcards.getRandom());
-        }
-
-    }
-    public void LoadFlashcards(string file)
-    {
-        trainingSigns = jsonUtility.LoadJSON<List<HandSign>>(file);
-        signCount = trainingSigns.Count;
-        unknownFlashcards = new List<HandSign>();
-        knownFlashcards = new List<HandSign>();
-        masteredFlashcards = new List<HandSign>();
-    }
-
     public void RunFlashcards(string file)
     {
         Init();
-        LoadFlashcards(file);
-
+        dataModel.LoadData(file);
         currentSignIdx = -1;
         NextSign();
 
@@ -135,18 +96,17 @@ public class LearnController : MonoBehaviour
 
     public void NextSign()
     {
-        Debug.Log(unknownFlashcards.Count + "," + knownFlashcards.Count + "," +masteredFlashcards.Count);
         currentSignIdx = currentSignIdx + 1;
-        if (currentSignIdx < signCount)
+        if (currentSignIdx < dataModel.signCount)
         {
-            viewRenderer.UpdatePageText(currentSignIdx, trainingSigns.Count);
-            viewRenderer.UpdateFlashcard(trainingSigns[currentSignIdx]);
-            currentSign = trainingSigns[currentSignIdx];
+            dataModel.SetCurrentSign(currentSignIdx);
+            viewRenderer.UpdatePageText(currentSignIdx, dataModel.signCount);
+            viewRenderer.UpdateFlashcard(dataModel.currentSign);
             if (!classifier.Active)
             {
                 classifier.StartClassifier();
             }
-            if (trainingSigns[currentSignIdx].type == GestureType.Static)
+            if (dataModel.currentSign.type == GestureType.Static)
             {
                 classifier.ChangeToStaticMode();
             }
@@ -157,72 +117,33 @@ public class LearnController : MonoBehaviour
         }
         else
         {
-            viewRenderer.GoToEndScreen(unknownFlashcards.Count,knownFlashcards.Count, masteredFlashcards.Count);
+            int u = dataModel.unknownFlashcards.Count;
+            int k = dataModel.knownFlashcards.Count;
+            int m = dataModel.masteredFlashcards.Count;
+            viewRenderer.GoToEndScreen(u,k,m);
         }
     }
 
-
-    public void SetSign(HandSign sign)
-    {
-        viewRenderer.UpdateFlashcard(sign);
-    }
-
-    public void ReLearn()
-    {
-        Debug.Log("Relear");
-        currentSignIdx = -1;
-        NextSign();
-    }
     public void KnownNext()
     {
-        if (!masteredFlashcards.Contains(currentSign))
-        {
-            //if previously unknown, remove from unknown
-            if (unknownFlashcards.Contains(currentSign))
-            {
-                Debug.Log(currentSign.sign_name);
-                unknownFlashcards.Remove(currentSign);
-            }
-            //search for sign in known list
-            int idx = knownFlashcards.IndexOf(currentSign);
-            //if previously known, remove from unknown, add to master, remove from sign list
-            if (idx >= 0)
-            {
-                masteredFlashcards.Add(knownFlashcards[idx]);
-                knownFlashcards.Remove(currentSign);
-            }
-            else
-            {
-                knownFlashcards.Add(currentSign);
-            }
-        }
+        dataModel.UpgradeCurrentSign();
         NextSign();
     }
 
     public void UnknownNext()
     {
-        //if previously mastered, remove one step to known
-        if (masteredFlashcards.Contains(currentSign))
-        {
-            masteredFlashcards.Remove(currentSign);
-            knownFlashcards.Add(currentSign);
-        }
-        else
-        {
-            //if previously known, remove from known list
-            if (knownFlashcards.Contains(currentSign))
-            {
-                knownFlashcards.Remove(currentSign);
-            }
-            //if current sign not in unknown list, add to unknown list
-            if (!unknownFlashcards.Contains(currentSign))
-            {
-                unknownFlashcards.Add(currentSign);
-            }
-        }
+        dataModel.DowngradeCurrentSign();
         NextSign();
     }
 
+
+    public void ReLearn()
+    {
+        Debug.Log("Relearn");
+        currentSignIdx = -1;
+        NextSign();
+    }
+    
 
     IEnumerator CalculateScore()
     {
@@ -234,7 +155,7 @@ public class LearnController : MonoBehaviour
         {
             if(classifier.Mode == GestureType.Static)
             {
-                distanceScore = classifier.GetGestureDistance(currentSign.sign_name);
+                distanceScore = classifier.GetGestureDistance(dataModel.currentSign.sign_name);
                 viewRenderer.UpdateScore(distanceScore);
                 if (distanceScore != Mathf.Infinity)
                 {
@@ -252,7 +173,7 @@ public class LearnController : MonoBehaviour
             }
             else
             {
-                if (classifier.FinishRecordingDynamicGesture())
+                if (classifier.HasFinishedRecordingDynamicGesture())
                 {
                     distanceScore = classifier.GetGestureDistance(currentSign.sign_name);
                     viewRenderer.UpdateScore(distanceScore);

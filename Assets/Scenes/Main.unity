@@ -988,18 +988,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.27058825, g: 0.6431373, b: 0.9607843, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 61adbe83d1d19c847ad48119e8a05418, type: 3}
+    m_FontSize: 28
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
+    m_BestFit: 1
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1996,7 +1996,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1099511471}
-  - component: {fileID: 1099511472}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -2025,26 +2024,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00012779, y: -0.000034332}
   m_SizeDelta: {x: 872.9629, y: 495.73425}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1099511472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1099511470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa6b16ea08d325a468bece70fb995e89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trainingController: {fileID: 0}
-  lessonController: {fileID: 0}
-  learningController: {fileID: 0}
-  lessonButton: {fileID: 350806342}
-  learnButton: {fileID: 876669847}
-  quizButton: {fileID: 336120131}
-  debugMode: 1
-  viewRenderer: {fileID: 2029617773}
 --- !u!1 &1240553419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2234,10 +2213,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1333323210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57ca12d52d1292a44912b4c2312def0d, type: 3}
+  m_Script: {fileID: 11500000, guid: d194aa7fff30e114ba265920444a8f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bootMenu: 0
+  flashcardButtonPrefab: {fileID: 8335169901517896852, guid: b476b875f36319a48be138dec40fc212,
+    type: 3}
+  lessonButtonPrefab: {fileID: 6899623310717240547, guid: 900110f8cd4290f49b78a8860703a70d,
+    type: 3}
+  container: {fileID: 572087310}
+  mainMenuReturnButton: {fileID: 1905356165}
+  lessonButton: {fileID: 350806342}
+  learnButton: {fileID: 876669847}
+  quizButton: {fileID: 336120131}
+  controller: {fileID: 1751979042}
 --- !u!1 &1467231855
 GameObject:
   m_ObjectHideFlags: 0
@@ -2781,6 +2770,7 @@ GameObject:
   - component: {fileID: 1751979041}
   - component: {fileID: 1751979040}
   - component: {fileID: 1751979039}
+  - component: {fileID: 1751979042}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2836,6 +2826,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1751979042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751979038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6b16ea08d325a468bece70fb995e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRenderer: {fileID: 1333323215}
 --- !u!1 &1856335550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,7 +2955,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 69.1, y: 30}
+  m_SizeDelta: {x: 70, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1905356165
 MonoBehaviour:
@@ -3110,7 +3113,6 @@ GameObject:
   - component: {fileID: 2029617772}
   - component: {fileID: 2029617771}
   - component: {fileID: 2029617770}
-  - component: {fileID: 2029617773}
   m_Layer: 5
   m_Name: Menu List Container
   m_TagString: Untagged
@@ -3189,25 +3191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495d485bcaabe294dbd116c55853f0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
---- !u!114 &2029617773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2029617768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d194aa7fff30e114ba265920444a8f5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashcardButtonPrefab: {fileID: 8335169901517896852, guid: b476b875f36319a48be138dec40fc212,
-    type: 3}
-  lessonButtonPrefab: {fileID: 6899623310717240547, guid: 900110f8cd4290f49b78a8860703a70d,
-    type: 3}
-  container: {fileID: 572087310}
-  mainMenuReturnButton: {fileID: 1905356165}
+  type: 2
 --- !u!1 &2076768698
 GameObject:
   m_ObjectHideFlags: 0

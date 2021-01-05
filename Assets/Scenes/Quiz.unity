@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495d485bcaabe294dbd116c55853f0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
+  type: 1
 --- !u!1 &59362117
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495d485bcaabe294dbd116c55853f0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 4
+  type: 2
 --- !u!1 &394717922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,7 +1301,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   classifier: {fileID: 1165503984}
-  UIManager: {fileID: 2062306386}
   viewRenderer: {fileID: 2062306391}
   debugMode: 0
   debugFlashcards: 0
@@ -3776,7 +3775,6 @@ GameObject:
   - component: {fileID: 2062306389}
   - component: {fileID: 2062306388}
   - component: {fileID: 2062306387}
-  - component: {fileID: 2062306386}
   - component: {fileID: 2062306391}
   m_Layer: 5
   m_Name: Canvas
@@ -3785,19 +3783,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2062306386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062306385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57ca12d52d1292a44912b4c2312def0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bootMenu: 0
 --- !u!114 &2062306387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3893,6 +3878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c7fe5ae29ed36c46bea571eef5259e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bootMenu: 0
   menuButton: {fileID: 1135767834}
   RestartQuizButton: {fileID: 2026089730}
   skipButton: {fileID: 862344236}
@@ -3906,7 +3892,6 @@ MonoBehaviour:
   resumeButton: {fileID: 1067009584}
   flashcardContainer: {fileID: 507097762}
   controller: {fileID: 761000172}
-  UIManager: {fileID: 2062306386}
 --- !u!1 &2087332484
 GameObject:
   m_ObjectHideFlags: 0

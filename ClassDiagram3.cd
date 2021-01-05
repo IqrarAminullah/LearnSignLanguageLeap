@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GestureRecognition" Collapsed="true">
+    <Position X="18.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAQAAAIAIBAAAACCAgDgAQAQRAEAgBAAAAAARAIA=</HashCode>
+      <FileName>Assets\Scripts\Controller\GestureRecognition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JSONIO">
+    <Position X="6.5" Y="3.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAABAAAAAAEAAAAEAAA=</HashCode>
+      <FileName>Assets\Scripts\Controller\JSONIO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearnController" Collapsed="true">
+    <Position X="15.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QDQAAAAAACAAAhoAAAEQQABggAAAAAAMBSAGgAC0AAA=</HashCode>
+      <FileName>Assets\Scripts\Controller\LearnController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearnEvents" Collapsed="true">
+    <Position X="17" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Controller\LearnEvents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LessonController" Collapsed="true">
+    <Position X="18.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAEAgICACABAAAAEAAAAAAAAAAAAGEAAA=</HashCode>
+      <FileName>Assets\Scripts\Controller\LessonController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenuController" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACABEAACAQAAgAAAAAAAAAAAAAgAAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Controller\MainMenuController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrainingController" Collapsed="true">
+    <Position X="18.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RDQgACAAACIEBgoAAAABAACAgAAAAABEASESAAiEEAA=</HashCode>
+      <FileName>Assets\Scripts\Controller\TrainingController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Flashcard" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAEAABAAAAEEQAIAAAAAAAEAAAgACIAAAAEE=</HashCode>
+      <FileName>Assets\Scripts\Model\Flashcard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HandSign" Collapsed="true">
+    <Position X="20.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQEAAACAAAAAgABAAAAAEAAAAAAABA=</HashCode>
+      <FileName>Assets\Scripts\Model\HandSign.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InverseWeightedList&lt;T&gt;" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAMAAAAAAAAAQAAAAAAAABAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Assets\Scripts\Model\InverseWeightedList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LessonMaterial" Collapsed="true">
+    <Position X="20.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQIAAAAAAQAAIAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Model\LessonMaterial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenuData" Collapsed="true">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAQAAAAAAAAAAAAACAAAAAAAAEEAAg=</HashCode>
+      <FileName>Assets\Scripts\Model\MainMenuData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuItem" Collapsed="true">
+    <Position X="15.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAFAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Model\MenuItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppData" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Utils\AppData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SliderEvent" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEACAAAAAAAABAEAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Utils\SliderEvent.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VideoController" Collapsed="true">
+    <Position X="13.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAhEEAACAAEAAiAJIgAAAACEAAFAQAgAwQEIAAEAA=</HashCode>
+      <FileName>Assets\Scripts\Utils\VideoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlexibleGridLayout" Collapsed="true">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAIAAAAAAAABAQAAAAAAAAAAACAAAAAgAwEQ=</HashCode>
+      <FileName>Assets\Scripts\View\FlexibleGridLayout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearnRenderer" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAggABAgECAAQQEAASEBBgAgAGAAIAAAAAQCkABAAAA=</HashCode>
+      <FileName>Assets\Scripts\View\LearnRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LessonRenderer" Collapsed="true">
+    <Position X="3" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAQBAAACAAQAkAACAAgAAAAAAUBAAAAAABAgAAAAA=</HashCode>
+      <FileName>Assets\Scripts\View\LessonRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenuRenderer" Collapsed="true">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAgBCAAAAMIAAAgAASAAAAAAAAAQAEAAAAAgAA=</HashCode>
+      <FileName>Assets\Scripts\View\MainMenuRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneSwitcher" Collapsed="true">
+    <Position X="17" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABBACAACAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\View\SceneSwitcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Singleton&lt;T&gt;" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAgAAAAABABAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\View\Singleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrainingRenderer" Collapsed="true">
+    <Position X="7.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAwgBBAACCAI0QEAAQEBAoAAEACAAAAABAAAAQgAAAA=</HashCode>
+      <FileName>Assets\Scripts\View\TrainingRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIController">
+    <Position X="20.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\View\UIController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIManager">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgACACAAAAAAIAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\View\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UISwitcher">
+    <Position X="8.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAABACIAAAAABAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\View\UISwitcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.DGClass" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAIABQBIAADAAJAABAAABAAAQAIAAggIAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Dynamic\DGClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.DGClassSample" Collapsed="true">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgIAAQAAACAQAAAAKAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Dynamic\DGClassSample.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.DGClassWrapper" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAEAAAAAAAAAAAAQAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Dynamic\DGClassWrapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.DGInstance" Collapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQABAABAABAAQAAgAAAAggAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Dynamic\DGInstance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.DGInstanceSample" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Dynamic\DGInstanceSample.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.DGInstanceWrapper" Collapsed="true">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAgAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Dynamic\DGInstanceWrapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.DGRecordedEventArgs" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Dynamic\DGRecorder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.DGRecorder" Collapsed="true">
+    <Position X="20.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAIAgAgAgAggAAIAAAAAQAAAAAAASABIBAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Dynamic\DGRecorder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.SGClass" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIgAAAAASAAAAAAAAgAAAAAAAAAgAQAAgBAgA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Static\SGClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.SGClassWrapper" Collapsed="true">
+    <Position X="18.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAEAAAAAAAAAAAAQAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Static\SGClassWrapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.SGInstance" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABQBAEAAAAAAACAEAABAACgQAAIAAAAgAAQAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Static\SGInstance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.SGInstanceSingleHand" Collapsed="true">
+    <Position X="20.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EpADZAABAACCADNaACkAAAiAQAAggAICkABAIEdRgAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Static\SGInstanceSingleHand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.SGInstanceWrapper" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAgAAAAAAAAAAAAAAAAAAAQAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Static\SGInstanceWrapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.StatisticalClassifier" Collapsed="true">
+    <Position X="17" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAABAgBAAAAAAAAII=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\StatisticalClassifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.Feature" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAACAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Miscellaneous\Feature.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.FeatureWeight" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Miscellaneous\FeatureWeight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.GestureDistance" Collapsed="true">
+    <Position X="17" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Miscellaneous\GestureDistance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.Vec3" Collapsed="true">
+    <Position X="11.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAACAYAUAAAAAAAAAAAAAgAAAAAAAYAE=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Miscellaneous\Vec3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.HelperMethods" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAQAACAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Util\HelperMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeapGestureRecognition.SQLiteProvider" Collapsed="true">
+    <Position X="15.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQABEhGAKAAECAiAQgIAAUAAIgAIAAAgAQAACAAAAAE=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Util\SQLiteProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="MenuType" Collapsed="true">
+    <Position X="15.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAgAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\Controller\MainMenuController.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FingerJoint" Collapsed="true">
+    <Position X="17" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEQABAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Enum\FingerType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BoneType" Collapsed="true">
+    <Position X="11.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAE=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Enum\FingerType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GestureType" Collapsed="true">
+    <Position X="18.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Model\HandSign.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MediaType" Collapsed="true">
+    <Position X="13.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAEAAAg=</HashCode>
+      <FileName>Assets\Scripts\Model\LessonMaterial.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ActivityType" Collapsed="true">
+    <Position X="10" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAIAAAAAAAAgAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\Utils\AppData.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SceneType" Collapsed="true">
+    <Position X="17" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAQAAAAAAAAAAAAgAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\View\SceneSwitcher.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="UIType" Collapsed="true">
+    <Position X="18.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAQAABAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\View\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LeapGestureRecognition.FeatureName" Collapsed="true">
+    <Position X="15.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAQAkACAAIAIQAAAAAAAAAAggIBAAAQgCBQIAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Enum\FeatureName.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LeapGestureRecognition.GestureType" Collapsed="true">
+    <Position X="20.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Enum\GestureType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LeapGestureRecognition.HandConfiguration" Collapsed="true">
+    <Position X="10" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAgAAAAAAAgAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Enum\HandConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LeapGestureRecognition.LGR_Mode" Collapsed="true">
+    <Position X="11.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAJBAAAAAIACAAAAABAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Enum\LGR_Mode.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LeapGestureRecognition.DGRecorderState" Collapsed="true">
+    <Position X="13.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAEAAAAAAAAAAAAAAAAAAAhCAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\LeapGestureRecognition\Model\Gesture\Dynamic\DGRecorder.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

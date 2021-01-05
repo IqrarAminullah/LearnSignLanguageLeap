@@ -1306,7 +1306,7 @@ MonoBehaviour:
     m_FontSize: 33
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 64
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1641,7 +1641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495d485bcaabe294dbd116c55853f0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 4
+  type: 2
 --- !u!1 &1834390939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,7 +1673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb90a8d5f3a21b342ba19ea6b6d1e2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finalScore: 0
 --- !u!114 &1834390941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1751,10 +1750,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1835904894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57ca12d52d1292a44912b4c2312def0d, type: 3}
+  m_Script: {fileID: 11500000, guid: 894b407b09b0420408073debf885c3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bootMenu: 2
+  bootMenu: 0
+  titleText: {fileID: 1333914984}
+  pageText: {fileID: 1884650155}
+  contentContainer: {fileID: 2089218259}
+  nextButton: {fileID: 379279223}
+  prevButton: {fileID: 563891677}
+  videoPrefab: {fileID: 7153711398590246046, guid: 0f27e54b7db476a489ca80f5ad4bffdc,
+    type: 3}
+  imagePrefab: {fileID: 5917603192727434177, guid: 8460442e636dd834cbdde7237e6b3b76,
+    type: 3}
+  textPrefab: {fileID: 107220214781449552, guid: f30331f2b5c1aea44adf806307d530f3,
+    type: 3}
+  controller: {fileID: 2047025086}
 --- !u!114 &1835904896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2010,17 +2021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9aab27adfe627248bade1ac6a6a6928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleText: {fileID: 1333914984}
-  pageText: {fileID: 1884650155}
-  contentContainer: {fileID: 2089218259}
-  nextButton: {fileID: 379279223}
-  prevButton: {fileID: 563891677}
-  videoPrefab: {fileID: 7153711398590246046, guid: 0f27e54b7db476a489ca80f5ad4bffdc,
-    type: 3}
-  imagePrefab: {fileID: 5917603192727434177, guid: 8460442e636dd834cbdde7237e6b3b76,
-    type: 3}
-  textPrefab: {fileID: 107220214781449552, guid: f30331f2b5c1aea44adf806307d530f3,
-    type: 3}
+  viewRenderer: {fileID: 1835904895}
   debugMode: 1
 --- !u!224 &2047025087
 RectTransform:
@@ -2081,7 +2082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495d485bcaabe294dbd116c55853f0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  type: 0
 --- !u!1 &2059699112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,7 +2121,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -370, y: 30.000008}
-  m_SizeDelta: {x: 80, y: 40}
+  m_SizeDelta: {x: 70, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2059699114
 MonoBehaviour:
