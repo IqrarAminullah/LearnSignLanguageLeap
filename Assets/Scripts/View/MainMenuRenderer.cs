@@ -57,7 +57,7 @@ public class MainMenuRenderer : UIManager
 
     void UpdateLoadFilePath(string filepath)
     {
-        AppData.LoadFilePath = filepath;
+        AppData.loadFilePath = filepath;
     }
     #endregion
 
@@ -87,7 +87,7 @@ public class MainMenuRenderer : UIManager
                     itemButton.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>(item.itemImage);
                     itemButton.GetComponentInChildren<Text>().text = item.itemName;
                     Button button = itemButton.GetComponentInChildren<Button>();
-                    button.onClick.AddListener(() => AppData.LoadFilePath = item.itemFilePath);
+                    button.onClick.AddListener(() => controller.LoadAppData(item.itemFilePath, item.dbPath, ActivityType.Quiz));
                     SceneSwitcher switcher = itemButton.GetComponent<SceneSwitcher>();
                     if (switcher == null)
                     {
@@ -108,7 +108,7 @@ public class MainMenuRenderer : UIManager
                     itemButton.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>(item.itemImage);
                     itemButton.GetComponentInChildren<Text>().text = item.itemName;
                     Button button = itemButton.GetComponentInChildren<Button>();
-                    button.onClick.AddListener(() => AppData.LoadFilePath = item.itemFilePath);
+                    button.onClick.AddListener(() => controller.LoadAppData(item.itemFilePath, item.dbPath, ActivityType.Quiz));
                     SceneSwitcher switcher = itemButton.GetComponent<SceneSwitcher>();
                     if (switcher == null)
                     {
@@ -129,8 +129,8 @@ public class MainMenuRenderer : UIManager
                     itemButton.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>(item.itemImage);
                     itemButton.GetComponentInChildren<Text>().text = item.itemName;
                     Button button = itemButton.GetComponentInChildren<Button>();
-                    button.onClick.AddListener(() => AppData.LoadFilePath = item.itemFilePath);
-                    Debug.Log(AppData.LoadFilePath+ " " + item.itemFilePath);
+                    button.onClick.AddListener(() => controller.LoadAppData(item.itemFilePath,item.dbPath,ActivityType.Quiz));
+                    Debug.Log(AppData.loadFilePath+ " " + item.itemFilePath);
                     SceneSwitcher switcher = itemButton.GetComponent<SceneSwitcher>();
                     if (switcher == null)
                     {

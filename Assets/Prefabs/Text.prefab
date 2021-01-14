@@ -466,7 +466,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 107220214461362262}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.06615042
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -536,7 +536,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: f8060d9117e8f464ca6662561df66709, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0

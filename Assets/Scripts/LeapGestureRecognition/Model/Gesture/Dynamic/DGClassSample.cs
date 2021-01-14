@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using UnityEngine;
 
 namespace LeapGestureRecognition
 {
@@ -43,7 +44,9 @@ namespace LeapGestureRecognition
 			int dgFeatureCount = 0;
 			if (otherInstance.LeftHand != null)
 			{
+				Debug.Log("No Left Hand");
 				dgDistance += MeanLeftPalmVelocity.DistanceTo(otherInstance.LeftPalmVelocity) / StdDevLeftPalmVelocity;
+
 				dgFeatureCount++;
 			}
 			if (otherInstance.RightHand != null)

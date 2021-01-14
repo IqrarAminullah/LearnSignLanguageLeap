@@ -18,16 +18,17 @@ namespace LeapGestureRecognition
 
 		public SQLiteProvider(string fileName)
 		{
-			_connString = String.Format("Data Source={0};Version=3;Pooling=True;Max Pool Size=100;", fileName);
-			initDB(fileName);
+			string filePath = Application.streamingAssetsPath + "/" + fileName;
+			_connString = String.Format("Data Source={0};Version=3;Pooling=True;Max Pool Size=100;", filePath);
+			initDB(filePath);
 		}
 
 		#region Private Methods
-		private void initDB(string fileName)
+		private void initDB(string filePath)
 		{
-			if (!File.Exists(fileName))
+			if (!File.Exists(filePath))
 			{
-				SQLiteConnection.CreateFile(fileName);
+				SQLiteConnection.CreateFile(filePath);
 
 				// Create tables
 				var createStatements = new List<string>() 

@@ -28,7 +28,7 @@ namespace LeapGestureRecognition
 		Frame _lastFrame;
 		int _frameRate;
 		bool _inRecordMode; // Record Mode (save multiple instances) or Recognize Mode (just store most recent instance).
-		float _stillSeconds = 0.8f; // Number of seconds hands must be still
+		float _stillSeconds = 10.0f; // Number of seconds hands must be still
 		float _stillDistance = 0.3f;
 		float _twoHandStillDistance = 1.0f;
 		#endregion

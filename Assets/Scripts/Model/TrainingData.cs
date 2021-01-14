@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainingData : MonoBehaviour
+public class TrainingData
 {
     #region attributes
-
-    private HandSign currentSign;
     private List<HandSign> handSigns;
     public List<HandSign> trainingSigns { get; set; }
 
@@ -17,17 +15,10 @@ public class TrainingData : MonoBehaviour
 
     #endregion
     // Start is called before the first frame update
-    void Start()
+    public TrainingData()
     {
         trainingSigns = new List<HandSign>();
         jsonUtility = new JSONIO();
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     #region public methods
@@ -48,8 +39,13 @@ public class TrainingData : MonoBehaviour
             handSigns[i] = handSigns[randomIndex];
             handSigns[randomIndex] = temp;
         }
+        int questionCount = quizQuestionNumber;
+        if(handSigns.Count < quizQuestionNumber)
+        {
+            questionCount = handSigns.Count;
+        }
         trainingSigns = new List<HandSign>();
-        for (int i = 0; i < quizQuestionNumber; i++)
+        for (int i = 0; i < questionCount; i++)
         {
             trainingSigns.Add(handSigns[i]);
         }

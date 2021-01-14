@@ -113,6 +113,15 @@
     <Compile Include="Assets\Plugins\LeapMotion\Core\Tests\Editor\UtilsTests.cs" />
     <Compile Include="Assets\Plugins\LeapMotion\Core\Tests\Editor\VectorHandTests.cs" />
     <Compile Include="Assets\Plugins\LeapMotion\Core\Tests\Editor\VectorTests.cs" />
+    <Compile Include="Assets\Plugins\LeapMotion\Internal\AutoHeader\Editor\AutoCopywriteHeader.cs" />
+    <Compile Include="Assets\Plugins\LeapMotion\Internal\Generation\BitConverter\Editor\BitConverterTestsTemplate.cs" />
+    <Compile Include="Assets\Plugins\LeapMotion\Internal\Generation\Editor\GeneratorEditor.cs" />
+    <Compile Include="Assets\Plugins\LeapMotion\Internal\Package\Editor\BuildDefinitionBuildMenuItems.cs" />
+    <Compile Include="Assets\Plugins\LeapMotion\Internal\Package\Editor\BuildDefinitionEditor.cs" />
+    <Compile Include="Assets\Plugins\LeapMotion\Internal\Package\Editor\DefinitionBaseEditor.cs" />
+    <Compile Include="Assets\Plugins\LeapMotion\Internal\Package\Editor\PackageDefinitionBuildMenuItems.cs" />
+    <Compile Include="Assets\Plugins\LeapMotion\Internal\Package\Editor\PackageDefinitionEditor.cs" />
+    <Compile Include="Assets\Plugins\LeapMotion\Internal\Testing\Scripts\Editor\ResaveUtility.cs" />
     <Compile Include="Assets\Plugins\LeapMotion\Modules\Hands\Scripts\Editor\LeapHandsAutoRigEditor.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

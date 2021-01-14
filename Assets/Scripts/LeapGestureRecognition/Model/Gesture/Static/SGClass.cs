@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using UnityEngine;
 
 namespace LeapGestureRecognition
 {
@@ -158,6 +159,7 @@ namespace LeapGestureRecognition
 					}
 				}
 			}
+			//Debug.Log("SGdistance " + distance);
 			//return distance / (gestureInstance.FeatureVector.Count - featuresToSkip.Count);
 			return distance / featureCount;
 		}

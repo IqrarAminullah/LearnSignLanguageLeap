@@ -11,17 +11,17 @@ public class LearnRenderer : UIManager
     [SerializeField]
     Text remainingUnknowns;
     [SerializeField]
-    Text remianingKnowns;
+    Text remainingKnowns;
     [SerializeField]
     Text masteredText;
     [SerializeField]
     Button menuButton;
     [SerializeField]
-    Button reLearnButton;
-    [SerializeField]
     Text scoreText;
     [SerializeField]
     Text pageText;
+    [SerializeField]
+    Text statusText;
     [SerializeField]
     GameObject flashcardContainer;
     [SerializeField]
@@ -30,12 +30,18 @@ public class LearnRenderer : UIManager
     GameObject dontKnowButton;
     [SerializeField]
     GameObject nextButton;
-    
+    [SerializeField]
+    GameObject relearnButtonGameObject;
+    Button reLearnButton;
+
     [Header("Controller")]
     [SerializeField]
     LearnController controller;
 
+    bool giveUp;
+    bool know;
     Flashcard flashcard;
+    Button flashcardButton;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -49,40 +55,63 @@ public class LearnRenderer : UIManager
         nextButton.GetComponent<Button>().onClick.AddListener(SkipFlashcard);
         knowButton.GetComponent<Button>().onClick.AddListener(NextFlashcard);
         menuButton.onClick.AddListener(Pause);
+        reLearnButton = relearnButtonGameObject.GetComponent<Button>();
         reLearnButton.onClick.AddListener(ReLearn);
+        flashcardButton = flashcardContainer.GetComponentInChildren<Button>();
         Debug.Log(controllerList.Count);
 
+    }
+
+    private void Update()
+    {
     }
 
     #region public methods
     public void UpdateScore(float score)
     {
-        if(score >= 100)
+        if (!giveUp)
         {
-            scoreText.text = "Tangan tidak terbaca!";
-            scoreText.color = Color.black;
-        }
-        else
-        {
-            if (score <= 3f)
+            if (score >= 100)
             {
-                scoreText.text = "Ya!";
-                scoreText.color = Color.green;
+                scoreText.text = "Tangan tidak terbaca dengan baik";
+                scoreText.color = Color.black;
             }
             else
             {
-                scoreText.text = "Bukan!";
-                scoreText.color = Color.red;
+                if (!know)
+                {
+                    scoreText.text = "Akurasi : " + score.ToString();
+                    if (score <= 3.0f)
+                    {
+                        //scoreText.text = "Ya!";
+                        scoreText.color = Color.green;
+                    }
+                    else
+                    {
+                        //scoreText.text = "Bukan!";
+                        scoreText.color = Color.red;
+                    }
+                }
             }
         }
     }
 
-    public void GoToEndScreen(int unknowns, int knowns, int masters)
+    public void ScoreStandby()
+    {
+        scoreText.text = "Silahkan berisyarat";
+    }
+
+    public void GoToEndScreen(int remainingSigns, int unknowns, int knowns, int masters)
     {
         SwitchUI(UIType.EndScreen);
+        Debug.Log(knowns);
         remainingUnknowns.text = "Jumlah belum diketahui"+ "\n" + unknowns;
-        remianingKnowns.text = "Jumlah sudah diketahui" + "\n" + knowns;
+        remainingKnowns.text = "Jumlah sudah diketahui" + "\n" + knowns;
         masteredText.text = "Jumlah dikuasai" + "\n" + masters;
+        if(remainingSigns == 0)
+        {
+            relearnButtonGameObject.gameObject.SetActive(false);
+        }
     }
 
     public void UpdateFlashcard(HandSign sign)
@@ -93,7 +122,12 @@ public class LearnRenderer : UIManager
         }
         flashcard.SetSign(sign);
 
-        knowButton.gameObject.SetActive(true);
+        knowButton.gameObject.SetActive(false);
+        giveUp = false;
+        know = false;
+        flashcardButton.interactable = false;
+        scoreText.text = "Memulai Pengenal";
+        scoreText.color = Color.black;
         //knowButton.GetComponent<Button>().interactable = false;
         nextButton.gameObject.SetActive(false);
     }
@@ -110,21 +144,24 @@ public class LearnRenderer : UIManager
 
     public void ReLearn()
     {
-        controller.ReLearn();
         SwitchUI(UIType.MainMenu);
+        controller.ReLearn();
     }
 
     public void FlipFlashcard()
     {
         flashcard.FlipCard();
-        knowButton.GetComponent<Button>().interactable = true;
+        //scoreText.gameObject.SetActive(false);
         knowButton.gameObject.SetActive(false);
         nextButton.gameObject.SetActive(true);
+        flashcardButton.interactable = true;
     }
 
     public void EnableKnowButton()
     {
-        knowButton.GetComponent<Button>().interactable = true;
+
+        know = true;
+        knowButton.SetActive(true);
     }
 
     public void SkipFlashcard()
@@ -140,6 +177,37 @@ public class LearnRenderer : UIManager
     public void GoToNextSign()
     {
         StartCoroutine("NextSignTransition");
+    }
+
+    public void UpdateStatus(GestureType type, LeapGestureRecognition.DGRecorderState state)
+    {
+        if(type == GestureType.Static){
+            statusText.text = "Gestur statis";
+        }
+        else
+        {
+            switch (state)
+            {
+                case LeapGestureRecognition.DGRecorderState.WaitingForHands:
+                    statusText.text = "Menunggu tangan";
+                    break;
+                case LeapGestureRecognition.DGRecorderState.WaitingToStart:
+                    statusText.text = "Menunggu Posisi Awal";
+                    break;
+                case LeapGestureRecognition.DGRecorderState.InStartPosition:
+                    statusText.text = "Memulai merekam gestur";
+                    break;
+                case LeapGestureRecognition.DGRecorderState.RecordingGesture:
+                    statusText.text = "Merekam gestur";
+                    break;
+                case LeapGestureRecognition.DGRecorderState.InEndPosition:
+                    statusText.text = "Mengakhiri rekaman gestur";
+                    break;
+                case LeapGestureRecognition.DGRecorderState.RecordingJustFinished:
+                    statusText.text = "Rekaman selesai";
+                    break;
+            }
+        }
     }
 
     IEnumerator NextSignTransition()

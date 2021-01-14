@@ -5,13 +5,12 @@ using UnityEngine;
 public class LearnData
 {
     #region attributes
-    List<HandSign> trainingSigns { get; set; }
+    public List<HandSign> trainingSigns { get; set; }
     public int signCount { get; set; }
     public List<HandSign> unknownFlashcards { get; set; }
     public List<HandSign> knownFlashcards { get; set; }
     public List<HandSign> masteredFlashcards { get; set; }
     private JSONIO jsonUtility;
-    public int currentSignIdx { get; set; }
     public HandSign currentSign { get; set; }
     #endregion
 
@@ -81,6 +80,15 @@ public class LearnData
                 unknownFlashcards.Add(currentSign);
             }
         }
+    }
+
+    public void RemoveMastered()
+    {
+        foreach(HandSign sign in masteredFlashcards)
+        {
+            trainingSigns.Remove(sign);
+        }
+        signCount = trainingSigns.Count;
     }
 
     public void SetCurrentSign(int idx)

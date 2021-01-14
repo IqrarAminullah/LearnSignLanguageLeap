@@ -9,6 +9,7 @@ public class MenuItem
     public string itemName;
     public string itemImage;
     public string itemFilePath;
+    public string dbPath;
 
     #endregion
 
@@ -18,20 +19,15 @@ public class MenuItem
         itemFilePath = "";
         itemImage = "";
         itemName = "";
+        dbPath = "";
     }
 
-    public MenuItem(string name, string imgPath, string filePath)
+    public MenuItem(string name, string imgPath, string filePath, string databasePath)
     {
         itemName = name;
         itemImage = imgPath;
         itemFilePath = filePath;
-    }
-
-    public void UpdateData(string name, string imgPath, string filePath)
-    {
-        itemName = name;
-        itemImage = imgPath;
-        itemFilePath = filePath;
+        dbPath = databasePath;
     }
     #endregion
 }

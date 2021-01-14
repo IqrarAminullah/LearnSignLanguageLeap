@@ -6,7 +6,7 @@ using UnityEngine;
 using LeapGestureRecognition;
 using Leap;
 
-public class GestureRecognition : MonoBehaviour
+public class GestureRecognition
 {
     #region attributes
     public Controller leapController;
@@ -18,6 +18,9 @@ public class GestureRecognition : MonoBehaviour
     public GestureType Mode { get; set; }
     public bool Active { get; set; }
     public SQLiteProvider sqliteProvider { get; set; }
+    private string currrentDB;
+    List<SGClassWrapper> StaticGestures;
+    List<DGClassWrapper> DynamicGestures;
     Thread classifierThread;
     #endregion
 
@@ -30,7 +33,7 @@ public class GestureRecognition : MonoBehaviour
         RankedStaticGestures = new Dictionary<string, float>();
         RankedDynamicGestures = new Dictionary<string, float>();
         Mode = GestureType.Static; // Probably not necessary to initialize
-        Active = true;
+        Active = false;
         classifierThread = new Thread(GestureClassifyThread);
     }
 
@@ -38,32 +41,35 @@ public class GestureRecognition : MonoBehaviour
     {
 
         sqliteProvider = new SQLiteProvider(databaseName);
-        List<SGClassWrapper> StaticGestures = sqliteProvider.GetAllStaticGestureClasses();
-        List<DGClassWrapper> DynamicGestures = sqliteProvider.GetAllDynamicGestureClasses();
+        StaticGestures = sqliteProvider.GetAllStaticGestureClasses();
+        DynamicGestures = sqliteProvider.GetAllDynamicGestureClasses();
 
         Classifier = new StatisticalClassifier(StaticGestures, DynamicGestures);
     }
 
     public void ProcessFrame(Frame frame)
     {
-        if (Mode == GestureType.Static)
+        if(Classifier != null)
         {
-            RankedStaticGestures = Classifier.GetDistancesFromAllClasses(new SGInstance(frame));
-            //List<GestureDistance> distanceList = new List<GestureDistance>(distances.OrderBy(g => g.Value).Select(g => new GestureDistance(g.Key.Name, g.Value)));
-            //RankedStaticGestures = distanceList.ToDictionary(x => x.Name, x => x.Distance);
-        }
-        else
-        {
-            DgRecorder.ProcessFrame(frame);
-            CurrentState = DgRecorder.State;
-            switch (CurrentState)
+            if (Mode == GestureType.Static)
             {
-                case DGRecorderState.RecordingJustFinished:
-                    if (DgRecorder.MostRecentInstance.Samples.Count == 0) break;
+                RankedStaticGestures = Classifier.GetDistancesFromAllClasses(new SGInstance(frame));
+                //List<GestureDistance> distanceList = new List<GestureDistance>(distances.OrderBy(g => g.Value).Select(g => new GestureDistance(g.Key.Name, g.Value)));
+                //RankedStaticGestures = distanceList.ToDictionary(x => x.Name, x => x.Distance);
+            }
+            else
+            {
+                DgRecorder.ProcessFrame(frame);
+                CurrentState = DgRecorder.State;
+                switch (CurrentState)
+                {
+                    case DGRecorderState.RecordingJustFinished:
+                        if (DgRecorder.MostRecentInstance.Samples.Count == 0) break;
 
-                    RankedDynamicGestures = Classifier.GetDistancesFromAllClasses(DgRecorder.MostRecentInstance);
-                   // RankedDynamicGestures = new List<GestureDistance>(distances.OrderBy(g => g.Value).Select(g => new GestureDistance(g.Key.Name, g.Value)));
-                    break;
+                        RankedDynamicGestures = Classifier.GetDistancesFromAllClasses(DgRecorder.MostRecentInstance);
+                        // RankedDynamicGestures = new List<GestureDistance>(distances.OrderBy(g => g.Value).Select(g => new GestureDistance(g.Key.Name, g.Value)));
+                        break;
+                }
             }
         }
     }
@@ -82,6 +88,7 @@ public class GestureRecognition : MonoBehaviour
 
     public void StartClassifier()
     {
+
         Active = true;
         classifierThread.Start();
         //StartCoroutine(GestureClassify());
@@ -89,7 +96,6 @@ public class GestureRecognition : MonoBehaviour
 
     public void StopClassifier()
     {
-        Debug.Log("Stop Classifier");
         Active = false;
         classifierThread.Join();
         //StopCoroutine(GestureClassify());
@@ -101,6 +107,7 @@ public class GestureRecognition : MonoBehaviour
         {
             Frame frame = leapController.Frame();
             ProcessFrame(frame);
+            //Debug.Log(RankedDynamicGestures)
             //Debug.Log(string.Format("{0},{1}", RankedStaticGestures[0].Name,RankedStaticGestures[0].Distance));
             yield return null;
         }
@@ -111,22 +118,43 @@ public class GestureRecognition : MonoBehaviour
     {
         while (Active)
         {
+            if(leapController == null)
+            {
+                leapController = new Controller();
+            }
             Frame frame = leapController.Frame();
-            ProcessFrame(frame);
+            if(frame != null)
+            {
+                ProcessFrame(frame);
+            }
         }
     }
-
     public float GetGestureDistance(string gestureName)
     {
         float f;
-        if (RankedStaticGestures.TryGetValue(gestureName, out f))
+        if(Mode == GestureType.Static)
         {
-            return f;
+            if (RankedStaticGestures.TryGetValue(gestureName, out f))
+            {
+                return f;
+            }
+            else
+            {
+                return Mathf.Infinity;
+            };
         }
         else
         {
-            return 100;
-        };
+            if (RankedDynamicGestures.TryGetValue(gestureName, out f))
+            {
+                Debug.Log(gestureName + " " + f);
+                return f;
+            }
+            else
+            {
+                return Mathf.Infinity;
+            };
+        }
     }
 
     public string GetClosestGesture()
@@ -145,7 +173,7 @@ public class GestureRecognition : MonoBehaviour
 
     public bool HasFinishedRecordingDynamicGesture()
     {
-        return CurrentState == DGRecorderState.RecordingJustFinished;
+        return CurrentState == DGRecorderState.InEndPosition;
     }
 
 

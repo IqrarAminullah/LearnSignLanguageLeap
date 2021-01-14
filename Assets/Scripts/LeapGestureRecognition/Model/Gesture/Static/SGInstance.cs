@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using UnityEngine;
 
 namespace LeapGestureRecognition
 {
@@ -172,17 +173,21 @@ namespace LeapGestureRecognition
 
 				foreach(var fingerType in (Finger.FingerType[])Enum.GetValues(typeof(Finger.FingerType))) 
 				{
-					foreach(var jointType in (FingerJoint[])Enum.GetValues(typeof(FingerJoint))) 
-					{
-						var fjp_rel1 = LeftHand.FingerJointPositions_Relative[fingerType][jointType];
-						var fjp_rel2 = otherInstance.LeftHand.FingerJointPositions_Relative[fingerType][jointType];
-						lerpedSGI.LeftHand.FingerJointPositions_Relative[fingerType][jointType] = fjp_rel1.Lerp(fjp_rel2, amount);
+					if(fingerType != Finger.FingerType.TYPE_UNKNOWN)
+                    {
+						foreach (var jointType in (FingerJoint[])Enum.GetValues(typeof(FingerJoint)))
+						{
+							var fjp_rel1 = LeftHand.FingerJointPositions_Relative[fingerType][jointType];
+							var fjp_rel2 = otherInstance.LeftHand.FingerJointPositions_Relative[fingerType][jointType];
+							lerpedSGI.LeftHand.FingerJointPositions_Relative[fingerType][jointType] = fjp_rel1.Lerp(fjp_rel2, amount);
 
-						var fjp_world1 = LeftHand.FingerJointPositions_World[fingerType][jointType];
-						var fjp_world2 = otherInstance.LeftHand.FingerJointPositions_World[fingerType][jointType];
-						lerpedSGI.LeftHand.FingerJointPositions_World[fingerType][jointType] = fjp_world1.Lerp(fjp_world2, amount);
+							var fjp_world1 = LeftHand.FingerJointPositions_World[fingerType][jointType];
+							var fjp_world2 = otherInstance.LeftHand.FingerJointPositions_World[fingerType][jointType];
+							lerpedSGI.LeftHand.FingerJointPositions_World[fingerType][jointType] = fjp_world1.Lerp(fjp_world2, amount);
+
+						}
+						lerpedSGI.LeftHand.FingerTipPositions[fingerType] = LeftHand.FingerTipPositions[fingerType].Lerp(otherInstance.LeftHand.FingerTipPositions[fingerType], amount);
 					}
-					lerpedSGI.LeftHand.FingerTipPositions[fingerType] = LeftHand.FingerTipPositions[fingerType].Lerp(otherInstance.LeftHand.FingerTipPositions[fingerType], amount);
 				}
 
 				lerpedSGI.LeftHand.ForearmCenter_Relative = LeftHand.ForearmCenter_Relative.Lerp(otherInstance.LeftHand.ForearmCenter_Relative, amount);
@@ -227,19 +232,22 @@ namespace LeapGestureRecognition
 
 				foreach (var fingerType in (Finger.FingerType[])Enum.GetValues(typeof(Finger.FingerType)))
 				{
-					foreach (var jointType in (FingerJoint[])Enum.GetValues(typeof(FingerJoint)))
+
+					if (fingerType != Finger.FingerType.TYPE_UNKNOWN)
 					{
-						var fjp_rel1 = RightHand.FingerJointPositions_Relative[fingerType][jointType];
-						var fjp_rel2 = otherInstance.RightHand.FingerJointPositions_Relative[fingerType][jointType];
-						lerpedSGI.RightHand.FingerJointPositions_Relative[fingerType][jointType] = fjp_rel1.Lerp(fjp_rel2, amount);
+						foreach (var jointType in (FingerJoint[])Enum.GetValues(typeof(FingerJoint)))
+						{
+							var fjp_rel1 = RightHand.FingerJointPositions_Relative[fingerType][jointType];
+							var fjp_rel2 = otherInstance.RightHand.FingerJointPositions_Relative[fingerType][jointType];
+							lerpedSGI.RightHand.FingerJointPositions_Relative[fingerType][jointType] = fjp_rel1.Lerp(fjp_rel2, amount);
 
-						var fjp_world1 = RightHand.FingerJointPositions_World[fingerType][jointType];
-						var fjp_world2 = otherInstance.RightHand.FingerJointPositions_World[fingerType][jointType];
-						lerpedSGI.RightHand.FingerJointPositions_World[fingerType][jointType] = fjp_world1.Lerp(fjp_world2, amount);
-					}
-					lerpedSGI.RightHand.FingerTipPositions[fingerType] = RightHand.FingerTipPositions[fingerType].Lerp(otherInstance.RightHand.FingerTipPositions[fingerType], amount);
+							var fjp_world1 = RightHand.FingerJointPositions_World[fingerType][jointType];
+							var fjp_world2 = otherInstance.RightHand.FingerJointPositions_World[fingerType][jointType];
+							lerpedSGI.RightHand.FingerJointPositions_World[fingerType][jointType] = fjp_world1.Lerp(fjp_world2, amount);
+						}
+						lerpedSGI.RightHand.FingerTipPositions[fingerType] = RightHand.FingerTipPositions[fingerType].Lerp(otherInstance.RightHand.FingerTipPositions[fingerType], amount);
+                    }
 				}
-
 				lerpedSGI.RightHand.ForearmCenter_Relative = RightHand.ForearmCenter_Relative.Lerp(otherInstance.RightHand.ForearmCenter_Relative, amount);
 				lerpedSGI.RightHand.ForearmCenter_World = RightHand.ForearmCenter_World.Lerp(otherInstance.RightHand.ForearmCenter_World, amount);
 				lerpedSGI.RightHand.HandDirection = RightHand.HandDirection.Lerp(otherInstance.RightHand.HandDirection, amount);

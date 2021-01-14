@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LessonData : MonoBehaviour
+public class LessonData
 {
     #region attributes
     public List<LessonMaterial> lesson { get; set; }
@@ -10,7 +10,7 @@ public class LessonData : MonoBehaviour
     private JSONIO jsonUtility;
     #endregion
     // Start is called before the first frame update
-    void Start()
+    public LessonData()
     {
         jsonUtility = new JSONIO();
         lesson = new List<LessonMaterial>();

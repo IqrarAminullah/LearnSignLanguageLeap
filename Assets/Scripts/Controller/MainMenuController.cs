@@ -18,6 +18,11 @@ public class MainMenuController : MonoBehaviour
     private MainMenuRenderer viewRenderer;
     private MainMenuData dataModel;
     #endregion
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +55,7 @@ public class MainMenuController : MonoBehaviour
                 viewRenderer.SwitchUI(UIType.EndScreen);
                 break;
             case ActivityType.Quiz:
-                viewRenderer.CreateMenuList(dataModel.flashcardList, MenuType.Quiz);
+                viewRenderer.CreateMenuList(dataModel.quizList, MenuType.Quiz);
                 viewRenderer.SwitchUI(UIType.EndScreen);
                 break;
             default:
@@ -70,7 +75,21 @@ public class MainMenuController : MonoBehaviour
 
     public void DisplayQuizzes()
     {
-        viewRenderer.CreateMenuList(dataModel.flashcardList, MenuType.Quiz);
+        viewRenderer.CreateMenuList(dataModel.quizList, MenuType.Quiz);
+    }
+
+    public void LoadAppData(string jsonPath, string dbPath, ActivityType type)
+    {
+        Debug.Log(dbPath);
+        AppData.loadFilePath = jsonPath;
+        AppData.databasePath = dbPath;
+        AppData.currentActivity = type;
+
+    }
+
+    public void QuitAplication()
+    {
+        Application.Quit();
     }
     #endregion
 }

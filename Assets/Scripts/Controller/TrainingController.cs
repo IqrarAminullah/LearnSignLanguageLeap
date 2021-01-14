@@ -9,14 +9,13 @@ public class TrainingController : MonoBehaviour
 
     [Header("Variables")]
     [SerializeField]
-    const float distanceThreshold = 7;
+    const float distanceThreshold = 3;
     [SerializeField]
-    const float quizTimer = 10.5f;
+    const float quizTimer = 120f;
     float timeRemaining;
     float distanceScore;
 
     Flashcard flashcard { get; set; }
-    JSONIO jsonUtility;
 
     
 
@@ -25,11 +24,9 @@ public class TrainingController : MonoBehaviour
     private int quizScore;
     private int quizQuestionNumber;
     private int currentSignIdx;
-    private HandSign currentSign;
 
     private TrainingData dataModel;
     [Header("References")]
-    [SerializeField]
     GestureRecognition classifier;
     [SerializeField]
     private TrainingRenderer viewRenderer;
@@ -51,16 +48,12 @@ public class TrainingController : MonoBehaviour
             DebugTraining();
         }
 
-        RunTraining(AppData.LoadFilePath);
+        RunTraining(AppData.loadFilePath);
     }
     private void Update()
     {
         if (!inPause)
         {
-            if (!classifier.Active)
-            {
-                classifier.StartClassifier();
-            }
             if (!inPause)
             {
                 timeRemaining = timeRemaining - Time.deltaTime;
@@ -88,11 +81,11 @@ public class TrainingController : MonoBehaviour
         s.Add(new HandSign("SIBI_H", "Huruf H", "", "", "Huruf H dalam SIBI", GestureType.Static));
         s.Add(new HandSign("SIBI_I", "Huruf I", "", "", "Huruf I dalam SIBI", GestureType.Static));
         s.Add(new HandSign("SIBI_J", "Huruf J", "", "", "Huruf J dalam SIBI", GestureType.Dynamic));
-        jsonUtility.SaveJson("Dummy.json",s);
     }
     private void Init()
     {
         dataModel = new TrainingData();
+        classifier = new GestureRecognition();
     }
     #endregion
 
@@ -103,42 +96,53 @@ public class TrainingController : MonoBehaviour
         distanceScore = Mathf.Infinity;
         float deltaTime = 0f;
         bool finish = false;
+        yield return new WaitForSeconds(1);
+        viewRenderer.ScoreStandby();
         while (classifier.Active && !finish && !skip)
         {
-            if (classifier.Mode == GestureType.Static)
+            if (!inPause)
             {
-                distanceScore = classifier.GetGestureDistance(dataModel.trainingSigns[currentSignIdx].sign_name);
-                viewRenderer.UpdateClassifierScore(distanceScore);
-                if (distanceScore != Mathf.Infinity)
+                if (classifier.Mode == GestureType.Static)
                 {
-                    if (distanceScore <= distanceThreshold)
-                    {
-                        deltaTime = deltaTime + Time.time;
-                        if (deltaTime > 2.0f)
-                        {
-                            quizScore = quizScore + 1;
-                            viewRenderer.GoToNextQuestion();
-                            finish = true;
-                        }
-                        isCalculating = false;
-                    }
-                }
-            }
-            else
-            {
-                viewRenderer.UpdateRecorderState(classifier.CurrentState);
-                if (classifier.HasFinishedRecordingDynamicGesture())
-                {
-                    distanceScore = classifier.GetGestureDistance(currentSign.sign_name);
+                    distanceScore = classifier.GetGestureDistance(dataModel.trainingSigns[currentSignIdx].sign_name);
                     viewRenderer.UpdateClassifierScore(distanceScore);
                     if (distanceScore != Mathf.Infinity)
                     {
                         if (distanceScore <= distanceThreshold)
                         {
-                            viewRenderer.GoToNextQuestion();
-                            quizScore = quizScore + 1;
-                            finish = true;
-                            isCalculating = false;
+                            viewRenderer.HoldState();
+                            deltaTime = deltaTime + Time.deltaTime;
+                            if (deltaTime > 2.5f)
+                            {
+                                quizScore = quizScore + 1;
+                                viewRenderer.GoToNextQuestion();
+                                finish = true;
+
+                                isCalculating = false;
+                            }
+                        }
+                        else
+                        {
+                            deltaTime = 0f;
+                        }
+                    }
+                }
+                else
+                {
+                    viewRenderer.UpdateRecorderState(classifier.CurrentState);
+                    if (classifier.HasFinishedRecordingDynamicGesture())
+                    {
+                        distanceScore = classifier.GetGestureDistance(dataModel.trainingSigns[currentSignIdx].sign_name);
+                        viewRenderer.UpdateClassifierScore(distanceScore);
+                        if (distanceScore != Mathf.Infinity)
+                        {
+                            if (distanceScore <= distanceThreshold)
+                            {
+                                viewRenderer.GoToNextQuestion();
+                                quizScore = quizScore + 1;
+                                finish = true;
+                                isCalculating = false;
+                            }
                         }
                     }
                 }
@@ -157,12 +161,12 @@ public class TrainingController : MonoBehaviour
 
         currentSignIdx = -1;
         quizScore = 0;
-        classifier.LoadDatabase("lgr_db.sqlite");
+        Debug.Log("load database" + " " + AppData.databasePath);
+        classifier.LoadDatabase(AppData.databasePath);
 
         NextSign();
 
-        StartCoroutine("CalculateScore");
-        if (!classifier.Active)
+        if(!classifier.Active)
         {
             classifier.StartClassifier();
         }
@@ -172,13 +176,13 @@ public class TrainingController : MonoBehaviour
     public void Skip()
     {
         skip = true;
-        StopAllCoroutines();
+        //StopAllCoroutines();
         NextSign();
     }
 
     public void RestartQuiz()
     {
-        RunTraining(AppData.LoadFilePath);
+        RunTraining(AppData.loadFilePath);
     }
 
     public void NextSign()
@@ -188,6 +192,7 @@ public class TrainingController : MonoBehaviour
         if (currentSignIdx < dataModel.currentNumSigns)
         {
             viewRenderer.UpdateFlashcard(dataModel.trainingSigns[currentSignIdx]);
+            viewRenderer.UpdateQuestionNumText(currentSignIdx, quizQuestionNumber);
             if (!classifier.Active)
             {
                 classifier.StartClassifier();
@@ -200,24 +205,22 @@ public class TrainingController : MonoBehaviour
             {
                 classifier.ChangeToDynamicMode();
             }
-            viewRenderer.UpdateQuestionNumText(currentSignIdx,quizQuestionNumber);
+            StartCoroutine("CalculateScore");
         }
         else
         {
-            Debug.Log("seleesee");
-            viewRenderer.GoToEndScreen(quizScore,quizQuestionNumber, timeRemaining);
+            inPause = true;
+            viewRenderer.GoToEndScreen(quizScore,dataModel.currentNumSigns, timeRemaining);
         }
     }
 
     public void Pause()
     {
         inPause = true;
-        classifier.Active = false;
     }
     public void Resume()
     {
         inPause = false;
-        classifier.Active = true;
     }
     #endregion
 }

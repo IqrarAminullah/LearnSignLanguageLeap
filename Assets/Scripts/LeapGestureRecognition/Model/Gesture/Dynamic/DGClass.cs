@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-
+using UnityEngine;
 namespace LeapGestureRecognition
 {
 	[DataContract]
@@ -85,6 +85,7 @@ namespace LeapGestureRecognition
 
 			float additionalDistWeight = 0;// 0.1f;
 			dist = ((1 - additionalDistWeight) * dist) + (additionalDistWeight * additionalDist);
+			//Debug.Log(string.Format("Dist: {0}, additionalDist {1}, additionaldistweight {2}", dist, additionalDist, additionalDistWeight));
 
 			return dist;
 		}

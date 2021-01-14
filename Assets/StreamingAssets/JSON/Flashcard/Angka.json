@@ -1,0 +1,32 @@
+[
+	{
+		"sign_name":"SIBI_SATU","sign_word":"Satu","sign_image_path":"Sprites/SIBI_SATU","type":0,"image_path":"Sprites/Angka_1","meaning":"Angka 1 dalam SIBI"
+	},
+	{
+		"sign_name":"SIBI_DUA","sign_word":"Dua","sign_image_path":"Sprites/SIBI_DUA","type":0,"image_path":"Sprites/Angka_2","meaning":"Angka 2 dalam SIBI"
+	},
+	{
+		"sign_name":"SIBI_TIGA","sign_word":"Tiga","sign_image_path":"Sprites/SIBI_TIGA","type":0,"image_path":"Sprites/Angka_3","meaning":"Angka 3 dalam SIBI"
+	},
+	{
+		"sign_name":"SIBI_EMPAT","sign_word":"Empat","sign_image_path":"Sprites/SIBI_EMPAT","type":0,"image_path":"Sprites/Angka_4","meaning":"Angka 4 dalam SIBI"
+	},
+	{
+		"sign_name":"SIBI_LIMA","sign_word":"Lima","sign_image_path":"Sprites/SIBI_LIMA","type":0,"image_path":"Sprites/Angka_5","meaning":"Angka 5 dalam SIBI"
+	},
+	{
+		"sign_name":"SIBI_ENAM","sign_word":"Enam","sign_image_path":"Sprites/SIBI_ENAM","type":0,"image_path":"Sprites/Angka_6","meaning":"Angka 6 dalam SIBI"
+	},
+	{
+		"sign_name":"SIBI_TUJUH","sign_word":"Tujuh","sign_image_path":"Sprites/SIBI_TUJUH","type":0,"image_path":"Sprites/Angka_7","meaning":"Angka 7 dalam SIBI"
+	},
+	{
+		"sign_name":"SIBI_DELAPAN","sign_word":"Delapan","sign_image_path":"Sprites/SIBI_DELAPAN","type":0,"image_path":"Sprites/Angka_8","meaning":"Angka 8 dalam SIBI"
+	},
+	{
+		"sign_name":"SIBI_SEMBILAN","sign_word":"Sembilan","sign_image_path":"Sprites/SIBI_SEMBILAN","type":0,"image_path":"Sprites/Angka_9","meaning":"Angka 9 dalam SIBI"
+	},
+	{
+		"sign_name":"SIBI_NOL","sign_word":"Nol","sign_image_path":"Sprites/SIBI_NOL","type":0,"image_path":"Sprites/Angka_0","meaning":"Angka 0 dalam SIBI"
+	}
+]

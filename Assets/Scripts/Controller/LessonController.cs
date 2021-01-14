@@ -5,13 +5,10 @@ using UnityEngine;
 public class LessonController : MonoBehaviour
 {
     #region Attributes
-    private List<LessonMaterial> lesson;
     private int currentMaterial;
-    private int materialCount;
 
     [SerializeField]
     private LessonRenderer viewRenderer;
-    private JSONIO jsonUtility;
     private LessonData dataModel;
     public bool debugMode;
     #endregion
@@ -24,9 +21,9 @@ public class LessonController : MonoBehaviour
         dataModel = new LessonData();
         if (debugMode == true)
         {
-            StartLesson("testLesson.json");
+            StartLesson(AppData.loadFilePath);
         }
-        StartLesson("testLesson.json");
+        StartLesson(AppData.loadFilePath);
     }
 
     // Update is called once per frame
@@ -51,7 +48,7 @@ public class LessonController : MonoBehaviour
         currentMaterial = 0;
         viewRenderer.UpdatePage(dataModel.lesson[currentMaterial], currentMaterial, dataModel.materialCount);
     }
-    public void nextMaterial()
+    public void NextMaterial()
     {
         if(currentMaterial == dataModel.materialCount-1)
         {
@@ -63,15 +60,15 @@ public class LessonController : MonoBehaviour
             viewRenderer.UpdatePage(dataModel.lesson[currentMaterial], currentMaterial, dataModel.materialCount);
         }
     }
-    public void prevMaterial()
+    public void PrevMaterial()
     {
         currentMaterial = currentMaterial - 1;
         viewRenderer.UpdatePage(dataModel.lesson[currentMaterial], currentMaterial, dataModel.materialCount);
     }
 
-    public void jumpToMaterial(int page)
+    public void JumpToMaterial(int pageNumber)
     {
-        currentMaterial = page;
+        currentMaterial = pageNumber;
         viewRenderer.UpdatePage(dataModel.lesson[currentMaterial], currentMaterial, dataModel.materialCount);
     }
     #endregion

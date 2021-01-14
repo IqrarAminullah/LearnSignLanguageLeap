@@ -1,0 +1,23 @@
+[
+	{
+		"title":"Perkenalan",
+		"text":"Memperkenalkan diri dalam bahasa isyarat tidaklah sulit.\nBerkenalan dapat dimulai dengan tahap sebagai berikut :\n 1. Membentuk isyarat \"Nama\" \n 2. Membentuk isyarat \"Saya\", \n 3. mengeja nama sendiri dengan isyarat alfabet atau menggunakan kata yang merepresentasikan nama sendiri.",
+		"mediaFilename":"",
+		"mediaType":0,
+		"mediaDescription":"Memakai bahasa isyarat"
+	},
+	{
+		"title":"Alfabet dalam bahasa isyarat SIBI",
+		"text":"",
+		"mediaFilename":"Sprites/LessonImg/Bahasa Isyarat/SIBI",
+		"mediaType":1,
+		"mediaDescription":"Alfabet dalam SIBI"
+	},
+	{
+		"title":"Video Memperkenalkan diri",
+		"text":"Perhatikan cara Marliana memperkenalkan dirinya",
+		"mediaFilename":"Video/Perkenalan",
+		"mediaType":2,
+		"mediaDescription":"Alfabet dalam BISINDO"
+	}
+]

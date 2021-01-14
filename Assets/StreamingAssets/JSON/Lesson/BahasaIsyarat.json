@@ -1,0 +1,30 @@
+[
+	{
+		"title":"Bahasa Isyarat",
+		"text":"Bahasa Isyarat adalah bahasa yang mengutamakan komunikasi manual, bahasa tubuh, dan gerak bibir, bukannya suara, untuk berkomunikasi. Orang tuli adalah kelompok utama yang menggunakan bahasa ini, biasanya dengan mengkombinasikan bentuk tangan, orientasi dan gerak tangan, lengan, dan tubuh, serta ekspresi wajah untuk mengungkapkan pikiran mereka. Bertentangan dengan pendapat banyak orang, pada kenyataannya belum ada bahasa isyarat internasional yang sukses diterapkan. Bahasa isyarat unik dalam jenisnya di setiap negara. Bahasa isyarat bisa saja berbeda di negara-negara yang berbahasa sama. Contohnya, Amerika Serikat dan Inggris meskipun memiliki bahasa tertulis yang sama, mereka memiliki bahasa isyarat yang sama sekali berbeda (American Sign Language dan British Sign Language). Hal yang sebaliknya juga berlaku. Ada negara-negara yang memiliki bahasa tertulis yang berbeda (contoh: Inggris dengan Spanyol), tetapi menggunakan bahasa isyarat yang sama. Untuk Indonesia, ada bahasa isyarat yaitu Bahasa Isyarat Indonesia (BISINDO) yang pengembangannya didukung oleh salah satu lembaga donatur dari Jepang yang melibatkan Chinese University of Hong Kong dan Universitas Indonesia. Untuk Sistem Isyarat Bahasa Indonesia (SIBI) merupakan sistem isyarat (bukan bahasa isyarat) yang dibuat oleh orang-orang dengar tanpa melibatkan orang tuli dalam pendidikan pendidikan luar biasa.",
+		"mediaFilename":"Sprites/LessonImg/Bahasa Isyarat/ASL_Family",
+		"mediaType":1,
+		"mediaDescription":"Memakai bahasa isyarat"
+	},
+	{
+		"title":"Sistem Isyarat Bahasa Indonesia",
+		"text":"Sistem bahasa isyarat SIBI pertama kali diperkenalkan oleh Anton Widyatmoko seorang mantan kepala sekolah SLB/B di Semarang. Bahasa isyarat ini merupakan adaptasi dari bahasa isyarat  American Sign Language (ASL). SIBI digunakan dalam pengajaran di Sekolah Luar Biasa untuk penyandang disabilitas Tuli (SLB/B).",
+		"mediaFilename":"Sprites/LessonImg/Bahasa Isyarat/SIBI",
+		"mediaType":1,
+		"mediaDescription":"Alfabet dalam SIBI"
+	},
+	{
+		"title":"Bahasa Isyarat Indonesia",
+		"text":"BISINDO merupakan bahasa isyarat yang dikembangkan oleh penyandang disabilitas Tuli melalui Gerakan Kesejahteraan Tuna Rungu Indonesia (GERKATIN). BISINDO muncul secara alami dalam budaya Indonesia dan praktis digunakan dalam kehidupan sehari-hari. Oleh karena itu, BISINDO memiliki beberapa variasi ditiap daerah, misalkan BISINDO yang digunakan di Balikpapan akan berbeda dengan BISINDO yang digunakan di Yogyakarta. ",
+		"mediaFilename":"Sprites/LessonImg/Bahasa Isyarat/BISINDO",
+		"mediaType":1,
+		"mediaDescription":"Alfabet dalam BISINDO"
+	},
+	{
+		"title":"Contoh Percakapan Bahasa Isyarat",
+		"text":"",
+		"mediaFilename":"Video/Percakapan",
+		"mediaType":2,
+		"mediaDescription":""
+	}
+]

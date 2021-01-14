@@ -1,0 +1,5 @@
+[
+	{"itemName":"Alfabet","itemImage":"Sprites/Icon/Alfabet","itemFilePath":"Flashcard/Alfabet","dbPath":"SIBI_Alfabet.sqlite"},
+	{"itemName":"Angka","itemImage":"Sprites/Icon/Angka","itemFilePath":"Flashcard/Angka","dbPath":"SIBI_Angka.sqlite"},
+	{"itemName":"Kata Ganti Orang","itemImage":"Sprites/Icon/Perkenalan","itemFilePath":"Flashcard/KataGanti","dbPath":"SIBI_KataGanti.sqlite"}
+]

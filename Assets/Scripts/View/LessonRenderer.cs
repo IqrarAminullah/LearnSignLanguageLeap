@@ -23,6 +23,8 @@ public class LessonRenderer : UIManager
     [SerializeField]
     private GameObject videoPrefab;
     [SerializeField]
+    private GameObject largeVideoPrefab;
+    [SerializeField]
     private GameObject imagePrefab;
     [SerializeField]
     private GameObject textPrefab;
@@ -35,8 +37,9 @@ public class LessonRenderer : UIManager
     protected new void Awake()
     {
         base.Awake();
-        prevButton.onClick.AddListener(controller.prevMaterial);
-        nextButton.onClick.AddListener(controller.nextMaterial);
+        prevButton.onClick.AddListener(controller.PrevMaterial);
+        nextButton.onClick.AddListener(controller.NextMaterial);
+        //prevButton2.onClick.AddListener(() => SwitchUI(UIType.MainMenu));
     }
 
     // Update is called once per frame
@@ -59,13 +62,25 @@ public class LessonRenderer : UIManager
             Debug.Log("Loading Media : " + m.mediaFilename);
             if (m.mediaType == MediaType.Video)
             {
-                GameObject videoContainer = Instantiate(videoPrefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), contentContainer.transform);
-                videoContainer.GetComponentInChildren<VideoController>().PlayVideoOnClip(Resources.Load<VideoClip>(m.mediaFilename));
+                if(m.text == string.Empty)
+                {
+                    GameObject videoContainer = Instantiate(largeVideoPrefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), contentContainer.transform);
+
+                    videoContainer.GetComponentInChildren<VideoController>().PlayVideoOnClip(Resources.Load<VideoClip>(m.mediaFilename));
+                }
+                else
+                {
+                    GameObject videoContainer = Instantiate(videoPrefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), contentContainer.transform);
+
+                    videoContainer.GetComponentInChildren<VideoController>().PlayVideoOnClip(Resources.Load<VideoClip>(m.mediaFilename));
+                }
+                //videoContainer.GetComponentInChildren<Text>().text = m.mediaDescription;
             }
             if (m.mediaType == MediaType.Image)
             {
                 GameObject imageContainer = Instantiate(imagePrefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), contentContainer.transform);
                 imageContainer.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>(m.mediaFilename);
+                imageContainer.GetComponentInChildren<Text>().text = m.mediaDescription;
             }
         }
     }

@@ -8,7 +8,8 @@ public enum UIType
 {
     MainMenu,
     PauseScreen,
-    EndScreen
+    EndScreen,
+    transitionScreen
 }
 
 public class UIManager : MonoBehaviour
@@ -38,7 +39,7 @@ public class UIManager : MonoBehaviour
         UIController nextUI = controllerList.Find(x => x.type == targetUI);
         if(nextUI != null)
         {
-            Debug.Log(AppData.currentActivity);
+            Debug.Log(nextUI);
             nextUI.gameObject.SetActive(true);
             activeUI = nextUI;
         }

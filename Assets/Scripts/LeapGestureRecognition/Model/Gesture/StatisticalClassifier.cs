@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace LeapGestureRecognition
 {
@@ -57,6 +58,7 @@ namespace LeapGestureRecognition
 				var gestureDistances = new Dictionary<string, float>();
 				foreach (var gestureClass in _dynamicGestureClasses)
 				{
+					//float distance = gestureClass.Gesture.DistanceTo(gestureInstance, UseDTW);
 					gestureDistances.Add(gestureClass.Name, gestureClass.Gesture.DistanceTo(gestureInstance, UseDTW));
 				}
 				return gestureDistances;

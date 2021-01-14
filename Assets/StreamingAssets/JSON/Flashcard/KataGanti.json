@@ -1,0 +1,20 @@
+[
+	{
+		"sign_name":"SIBI_AKU","sign_word":"Aku","sign_image_path":"Sprites/Flashcards/signs/SIBI_AKU","type":1,"image_path":"Sprites/Flashcards/img/KataGanti_Saya","meaning":"Tangan kanan membentuk isyarat U mengarah ke dada menghadap ke kanan digerakan menunjuk dada"
+	},
+	{
+		"sign_name":"SIBI_DIA","sign_word":"Dia","sign_image_path":"Sprites/Flashcards/signs/SIBI_Dia","type":0,"image_path":"Sprites/Flashcards/img/KataGanti_Dia","meaning":"Tangan kanan membenetuk isyarat D yang condong telentang mengarah ke depan, diletakan di hadapan dada"
+	},
+	{
+		"sign_name":"SIBI_KAMI","sign_word":"Kami","sign_image_path":"Sprites/Flashcards/signs/SIBI_KAMI","type":1,"image_path":"Sprites/Flashcards/img/KataGanti_Kami","meaning":"Tangan kanan membentuk isyarat D yang tegak menghadap ke kiri di depan bahu kanan, digerakan ke kiri sampai di depan bahu kiri"
+	},
+	{
+		"sign_name":"SIBI_KAMU","sign_word":"Kamu","sign_image_path":"Sprites/Flashcards/signs/SIBI_KAMU","type":1,"image_path":"Sprites/Flashcards/img/KataGanti_Kamu","meaning":"Tangan kanan membentuk isyarat B yang tegak menghadap ke depan di hadapan bahu kanan, digerakan lurus ke depan"
+	},
+	{
+		"sign_name":"SIBI_MEREKA","sign_word":"Mereka","sign_image_path":"Sprites/Flashcards/signs/SIBI_MEREKA","type":1,"image_path":"Sprites/Flashcards/img/KataGanti_Mereka","meaning":"Tangan kanan membentuk isyarat D yang telentang menyerong ke kiri di depan dada, digerakan melingkar ke kanan belakang"
+	},
+	{
+		"sign_name":"SIBI_SAYA","sign_word":"Saya","sign_image_path":"Sprites/Flashcards/signs/SIBI_SAYA","type":0,"image_path":"Sprites/Flashcards/img/KataGanti_Saya","meaning":"Tangan kanan membentuk isyarat Y yang mendatar mengarah ke kiri, ditempelkan pada dada"
+	}
+]

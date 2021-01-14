@@ -11,7 +11,8 @@ public enum ActivityType
 public static class AppData
 {
     #region attributes
-    public static string LoadFilePath { get; set; }
+    public static string loadFilePath { get; set; }
+    public static string databasePath { get; set; }
     public static ActivityType currentActivity { get; set; }
     #endregion
 }

@@ -12,12 +12,16 @@ public class Flashcard : MonoBehaviour
     private Image representationImage;
     private Text signName;
     private Text signMeaning;
+
+    private Button flashcardButton;
     
     [SerializeField]
     private GameObject frontSide;
     [SerializeField]
     private GameObject backSide;
 
+
+    float flipXValue;
     private HandSign sign;
     private bool frontActive;
     #endregion
@@ -38,6 +42,19 @@ public class Flashcard : MonoBehaviour
         signName = frontSide.GetComponentInChildren<Text>();
         signMeaning = backSide.GetComponentInChildren<Text>();
         representationImage = frontSide.GetComponentInChildren<Image>();
+        flashcardButton = GetComponent<Button>();
+        flashcardButton.onClick.AddListener(FlipCard);
+        flipXValue = 1f;
+    }
+
+    private void Update()
+    {
+
+        if (flipXValue < 1)
+        {
+            flipXValue += 0.05f;
+            this.gameObject.transform.localScale = new Vector3(flipXValue, this.gameObject.transform.localScale.y, this.gameObject.transform.localScale.z);
+        }
     }
     #endregion
 
@@ -49,7 +66,6 @@ public class Flashcard : MonoBehaviour
             Init();
         }
         sign = newSign;
-        Debug.Log(sign.ToString());
         if(sign.sign_image_path != string.Empty)
         {
             if(signImage.sprite == null)
@@ -74,7 +90,9 @@ public class Flashcard : MonoBehaviour
 
     public void FlipCard()
     {
-        if(frontActive == true)
+
+        flipXValue = 0.2f; //Flip card.
+        if (frontActive == true)
         {
             backSide.SetActive(true);
             frontSide.SetActive(false);

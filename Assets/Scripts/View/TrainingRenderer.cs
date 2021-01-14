@@ -13,6 +13,7 @@ public class TrainingRenderer : UIManager
     [SerializeField]
     Button RestartQuizButton;
     [SerializeField]
+    GameObject skipButtonObject;
     Button skipButton;
     [SerializeField]
     Text scoreText;
@@ -32,6 +33,11 @@ public class TrainingRenderer : UIManager
     Button resumeButton;
     [SerializeField]
     GameObject flashcardContainer;
+    [SerializeField]
+    //Animator transitionAnimator;
+
+    int animationStateHash;
+    IEnumerator IE_transition;
 
     [Header("Controller")]
     [SerializeField]
@@ -43,12 +49,15 @@ public class TrainingRenderer : UIManager
     // Start is called before the first frame update
     void Start()
     {
+        animationStateHash = Animator.StringToHash("state");
         if (controller == null)
         {
             controller = FindObjectOfType<TrainingController>();
         }
 
         flashcard = flashcardContainer.GetComponent<Flashcard>();
+        skipButtonObject.gameObject.SetActive(false);
+        skipButton = skipButtonObject.GetComponent<Button>();
         skipButton.onClick.AddListener(SkipQuestion);
         RestartQuizButton.onClick.AddListener(RestartQuiz);
         pauseButton.onClick.AddListener(Pause);
@@ -80,13 +89,21 @@ public class TrainingRenderer : UIManager
             flashcard = flashcardContainer.GetComponent<Flashcard>();
         }
         flashcard.SetSign(sign);
+        scoreText.text = "Mengaktifkan Pengenal";
+        scoreText.color = Color.black;
+    }
+
+    public void ScoreStandby()
+    {
+        scoreText.text = "Silahkan berisyarat";
     }
 
     public void UpdateClassifierScore(float score)
     {
+        
         if (score >= 100)
         {
-            scoreText.text = "Tangan tidak terbaca!";
+            scoreText.text = "Tangan tidak terbaca dengan baik!";
             scoreText.color = Color.black;
         }
         else
@@ -135,6 +152,29 @@ public class TrainingRenderer : UIManager
         SwitchUI(UIType.EndScreen);
     }
 
+    public void DisplayTransition()
+    {
+        //transitionAnimator.SetInteger(animationStateHash, 2);
+        if(IE_transition != null)
+        {
+            StopCoroutine(IE_transition);
+        }
+
+        IE_transition = TimedTransition();
+        StartCoroutine(IE_transition);
+    }
+
+    IEnumerator TimedTransition()
+    {
+        SwitchUI(UIType.transitionScreen);
+        yield return new WaitForSeconds(3);
+        SwitchUI(UIType.MainMenu);
+
+        controller.NextSign();
+        //transitionAnimator.SetInteger(animationStateHash, 1);
+
+    }
+
     public void UpdateRecorderState(LeapGestureRecognition.DGRecorderState state)
     {
         switch (state)
@@ -162,13 +202,18 @@ public class TrainingRenderer : UIManager
 
     public void GoToNextQuestion()
     {
-        controller.NextSign();
+        DisplayTransition();
     }
 
     public void RestartQuiz()
     {
         SwitchUI(UIType.MainMenu);
         controller.RestartQuiz();
+    }
+
+    public void HoldState()
+    {
+        statusText.text = "Tahan bentuk tangan";
     }
 
     public void Pause()
