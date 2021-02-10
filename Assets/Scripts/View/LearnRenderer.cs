@@ -159,7 +159,7 @@ public class LearnRenderer : UIManager
 
     public void EnableKnowButton()
     {
-
+        scoreText.text = "Ya!";
         know = true;
         knowButton.SetActive(true);
     }

@@ -1,0 +1,37 @@
+[
+	{
+		"sign_name":"SIBI_NAMA","sign_word":"Nama",
+		"sign_image_path":"Sprites/Flashcards/signs/SIBI_NAMA",
+		"type":0,
+		"image_path":"Sprites/Flashcards/img/Kata_Nama",
+		"meaning":"Tangkan membentuk kanan huruf U diletakkan menyilang di atas tangan kiri yang membentuk huruf U"
+	},
+	{
+		"sign_name":"SIBI_POLISI","sign_word":"Polisi",
+		"sign_image_path":"Sprites/Flashcards/signs/SIBI_POLISI",
+		"type":0,
+		"image_path":"Sprites/Flashcards/img/Pekerjaan_Polisi",
+		"meaning":"Tangan kanan L yang mendatar mengarah ke depan, ditempelkan di dada kiri atas."
+	},
+	{
+		"sign_name":"SIBI_BANK","sign_word":"Bank",
+		"sign_image_path":"Sprites/Flashcards/signs/SIBI_BANK",
+		"type":0,
+		"image_path":"Sprites/Flashcards/img/Tempat_Bank",
+		"meaning":"Telapak tangan kanan B yangcondong ke kiri menghadap pengisyarat, disentuhkan pada punggung tangan kiri A yang tegak menghadap pengisyarat di depan dada."
+	},
+	{
+		"sign_name":"SIBI_TEMPAT","sign_word":"Tempat",
+		"sign_image_path":"Sprites/Flashcards/signs/SIBI_TEMPAT",
+		"type":1,
+		"image_path":"Sprites/Flashcards/img/Kata_Tempat",
+		"meaning":"Tangan kanan dan kiri T yang mendatar berhadapan di depan dada dengan ruas telunjuk bersentuhan, digerakan melingkar berlawanan arah ke depan samping."
+	},
+	{
+		"sign_name":"SIBI_RUMAH","sign_word":"Rumah",
+		"sign_image_path":"Sprites/Flashcards/signs/SIBI_RUMAH",
+		"type":1,
+		"image_path":"Sprites/Flashcards/img/Tempat_Rumah",
+		"meaning":"Tangan kanan dan kiri B yang condong dengan jari-jari bertemu di depan dada, digerakan  ke bawah samping lalu lurus ke bawah"
+	}
+]

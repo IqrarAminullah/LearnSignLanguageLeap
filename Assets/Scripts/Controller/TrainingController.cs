@@ -192,7 +192,7 @@ public class TrainingController : MonoBehaviour
         if (currentSignIdx < dataModel.currentNumSigns)
         {
             viewRenderer.UpdateFlashcard(dataModel.trainingSigns[currentSignIdx]);
-            viewRenderer.UpdateQuestionNumText(currentSignIdx, quizQuestionNumber);
+            viewRenderer.UpdateQuestionNumText(currentSignIdx, dataModel.currentNumSigns);
             if (!classifier.Active)
             {
                 classifier.StartClassifier();
